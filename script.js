@@ -26,6 +26,9 @@ const SITE_PAGES = [
 ];
 
 const MAIN_SITE_PAGES = SITE_PAGES.slice(0, 4);
+const FOOTER_SITE_PAGES = SITE_PAGES.filter(
+  ([href]) => !['indexUS13.html', 'indexUS14.html', 'indexUS15.html'].includes(href)
+);
 const MAIN_NAV_LABELS = ['Inicio', 'Fundamentos', 'Pruebas', 'Herramientas'];
 
 // US-05: anima el recorrido entre etapas y lleva la selección al centro de la vista.
@@ -1214,6 +1217,7 @@ function initGlossary() {
     : null;
   const filter = () => {
     const query = normalize(input.value.trim());
+    const showAllTerms = selectedLetter === '';
     let visibleCount = 0;
     entries.forEach(entry => {
       const letter = normalize(entry.querySelector('strong').textContent)[0].toUpperCase();
@@ -1240,6 +1244,9 @@ function initGlossary() {
       if (active) link.setAttribute('aria-current', 'true');
       else link.removeAttribute('aria-current');
     });
+    showAll.textContent = showAllTerms
+      ? 'Ocultar todas las palabras'
+      : 'Mostrar todas las palabras';
     const count = visibleCount;
     search.querySelector('input').setAttribute(
       'aria-label',
@@ -1259,14 +1266,10 @@ function initGlossary() {
     input.focus();
   });
   showAll.addEventListener('click', () => {
-    selectedLetter = '';
+    selectedLetter = selectedLetter === '' ? null : '';
     input.value = '';
     filter();
     if (location.hash.startsWith('#letra-')) history.replaceState(null, '', `${location.pathname}${location.search}`);
-    grid.scrollIntoView({
-      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      block: 'start'
-    });
   });
   alphabet.querySelectorAll('a').forEach(link => link.addEventListener('click', event => {
     event.preventDefault();
@@ -1275,13 +1278,8 @@ function initGlossary() {
     input.value = '';
     filter();
     history.replaceState(null, '', link.hash);
-    heading?.scrollIntoView({
-      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      block: 'start'
-    });
   }));
   filter();
-  if (selectedLetter) initialLetterHeading.scrollIntoView({ behavior: 'auto', block: 'start' });
 }
 
 // US-13: sincroniza el acordeón nativo con aria-expanded.
@@ -2207,13 +2205,14 @@ function initSiteDirectory() {
     item.append(link);
     list.append(item);
   });
-  addPageLinks(mainList, MAIN_SITE_PAGES);
+  const footerMainPages = FOOTER_SITE_PAGES.slice(0, MAIN_SITE_PAGES.length);
+  addPageLinks(mainList, footerMainPages);
 
   const details = document.createElement('details');
   const summary = document.createElement('summary');
   summary.textContent = 'Explorar todas las páginas';
   const list = document.createElement('ul');
-  addPageLinks(list, SITE_PAGES.slice(MAIN_SITE_PAGES.length));
+  addPageLinks(list, FOOTER_SITE_PAGES.slice(footerMainPages.length));
   details.append(summary, list);
   nav.append(mainHeading, mainList, details);
   footer.querySelector('.wrap')?.append(nav);
