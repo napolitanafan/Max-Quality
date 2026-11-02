@@ -1255,13 +1255,11 @@ function initGlossary() {
   };
   input.addEventListener('input', () => {
     selectedLetter = null;
-    if (location.hash.startsWith('#letra-')) history.replaceState(null, '', `${location.pathname}${location.search}`);
     filter();
   });
   clear.addEventListener('click', () => {
     input.value = '';
     selectedLetter = null;
-    if (location.hash.startsWith('#letra-')) history.replaceState(null, '', `${location.pathname}${location.search}`);
     filter();
     input.focus();
   });
@@ -1269,7 +1267,6 @@ function initGlossary() {
     selectedLetter = selectedLetter === '' ? null : '';
     input.value = '';
     filter();
-    if (location.hash.startsWith('#letra-')) history.replaceState(null, '', `${location.pathname}${location.search}`);
   });
   alphabet.querySelectorAll('a').forEach(link => link.addEventListener('click', event => {
     event.preventDefault();
@@ -1277,7 +1274,6 @@ function initGlossary() {
     selectedLetter = heading?.textContent.trim() || link.textContent.trim();
     input.value = '';
     filter();
-    history.replaceState(null, '', link.hash);
   }));
   filter();
 }
@@ -2451,6 +2447,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Añade manejador a todos los enlaces que apunten a anclas de la misma página
   document.querySelectorAll('a[href]').forEach(link => {
+    if (link.closest('.alphabet')) return;
     const targetHash = samePageHash(link);
     if (!targetHash) return;
     link.addEventListener('click', event => {
