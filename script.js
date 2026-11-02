@@ -245,6 +245,12 @@ function initIllustrationLightbox() {
       }
       content.replaceChildren(enlargedFigure);
       dialog.showModal();
+      const enlargedPlayButton = enlargedFigure.querySelector('.diagram-play');
+      if (enlargedPlayButton && enlargedSvg) {
+        bindDiagramPlayButton(enlargedPlayButton, enlargedSvg, caption);
+        enlargedPlayButton.textContent = 'Repetir ciclo';
+        enlargedPlayButton.setAttribute('aria-label', `Repetir ciclo: ${caption}`);
+      }
       playDiagram(enlargedSvg);
     };
     trigger.addEventListener('click', open);
@@ -366,15 +372,19 @@ function initAgileShowcase() {
     playButton.textContent = 'Reproducir ciclo';
     const diagramTitle = svg.querySelector('title')?.textContent || 'diagrama';
     playButton.setAttribute('aria-label', `Reproducir animación: ${diagramTitle}`);
-    playButton.addEventListener('click', () => {
-      playDiagram(svg);
-      playButton.textContent = 'Repetir animación';
-      playButton.setAttribute('aria-label', `Repetir animación: ${diagramTitle}`);
-    });
+    bindDiagramPlayButton(playButton, svg, diagramTitle);
     if (!reducedMotion) actions.append(playButton);
     const zoomButton = figure.querySelector('.diagram-zoom');
     if (zoomButton) actions.append(zoomButton);
     if (actions.childElementCount) figure.insertBefore(actions, figure.querySelector('figcaption'));
+  });
+}
+
+function bindDiagramPlayButton(button, svg, title) {
+  button.addEventListener('click', () => {
+    playDiagram(svg);
+    button.textContent = 'Repetir ciclo';
+    button.setAttribute('aria-label', `Repetir ciclo: ${title}`);
   });
 }
 
