@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- Esta es la página de inicio: presento Max Quality y los principales temas del proyecto. -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max Quality — Sistemas de Gestión de Calidad del Software</title>
+<link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href="animations.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header class="site">
+  <!-- La cabecera reúne la marca y los accesos a los temas principales. -->
+  <div class="site-bar">
+    <a class="brand" href="#inicio" aria-label="Max Quality, ir al inicio">
+      <img src="logo.png" alt="Logotipo Max Quality">
+      <span class="brand-name">Max Quality<span>Sistema de Gestión de Calidad</span></span>
+    </a>
+    <nav class="primary" aria-label="Navegación principal">
+      <ul>
+        <li><a href="indexUS2.html">Fundamentos</a></li>
+        <li><a href="indexUS3.html">Técnicas de prueba</a></li>
+        <li><a href="indexUS4.html">Herramientas</a></li>
+        <li><a href="indexUS5.html">Ciclo de vida</a></li>
+        <li><a href="indexUS6y7.html">Modelos</a></li>
+        <li><a href="indexUS8.html">Metodologías ágiles</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- Presento el propósito del sitio y las primeras opciones para explorarlo. -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>Un software confiable se diseña, se mide y se revisa &mdash; <em>no ocurre por casualidad</em>.</h1>
+        <p>Max Quality reúne, en un solo lugar, los fundamentos de la gestión de calidad del software, los procesos de desarrollo tradicionales y ágiles, y las metodologías que hoy usa la industria. Contenido claro, ejemplos reales y herramientas para practicar lo que aprendés.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="indexUS2.html">Explorar fundamentos <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-ghost" href="#secciones">Ver contenidos</a>
+          <a class="btn btn-ghost" href="indexUS3.html">Técnicas de aseguramiento</a>
+          <a class="btn btn-ghost" href="indexUS4.html">Herramientas de calidad</a>
+        </div>
+      </div>
+
+      <div class="hero-figure" aria-hidden="true">
+        <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="200,20 344,105 344,275 200,360 56,275 56,105"
+                   fill="none" stroke="var(--gold-500)" stroke-width="3"/>
+          <polygon points="200,52 318,120 318,258 200,326 82,258 82,120"
+                   fill="var(--navy-800)" stroke="var(--navy-700)" stroke-width="1"/>
+          <polygon points="200,72 300,130 300,248 200,306 100,248 100,130"
+                   fill="none" stroke="rgba(217,188,138,0.35)" stroke-width="1"/>
+          <path d="M140 240 V150 L200 210 L260 150 V240"
+                fill="none" stroke="#f6f4ef" stroke-width="14"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M212 226 L235 249 L286 190"
+                fill="none" stroke="var(--gold-500)" stroke-width="14"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <!-- Una introducción breve explica qué se puede aprender en el sitio. -->
+  <section class="intro">
+    <div class="wrap">
+      <p class="intro-label">Por qué este sitio</p>
+      <div class="intro-body">
+        <p>La calidad del software no es un paso final de revisión: es una disciplina que atraviesa todo el ciclo de vida de un proyecto, desde cómo se relevan los requisitos hasta cómo se entrega y mantiene el producto. Entender esa disciplina requiere conocer tanto los marcos clásicos de gestión como los enfoques ágiles que dominan la industria hoy.</p>
+        <p>Este sitio está pensado para estudiantes y profesionales en formación que necesitan una referencia ordenada: teoría explicada sin rodeos, comparaciones entre enfoques y ejercicios para aplicar lo aprendido.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estas tarjetas llevan directamente a los contenidos del proyecto. -->
+  <section class="sections" id="secciones">
+    <div class="wrap">
+
+      <div class="card-grid">
+
+        <article class="card" id="fundamentos">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="18" stroke="#233457" stroke-width="2"/>
+            <path d="M16 25l6 6 11-13" stroke="#bd9257" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Fundamentos de calidad</h3>
+          <p>Qué entendemos por "calidad de software", normas y estándares de referencia, y por qué la calidad se gestiona y no se improvisa.</p>
+          <a class="card-link" href="indexUS2.html">Leer los fundamentos <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="card" id="procesos">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none">
+            <rect x="8" y="10" width="14" height="10" stroke="#233457" stroke-width="2"/>
+            <rect x="26" y="28" width="14" height="10" stroke="#233457" stroke-width="2"/>
+            <path d="M22 15h8a4 4 0 0 1 4 4v9" stroke="#bd9257" stroke-width="2" fill="none"/>
+          </svg>
+          <h3>Procesos de desarrollo</h3>
+          <p>El ciclo de vida del software: análisis, diseño, construcción, pruebas y mantenimiento, con sus entradas y salidas en cada etapa.</p>
+          <a class="card-link" href="indexUS5.html">Ver el ciclo completo <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="card" id="metodologias">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none">
+            <path d="M24 8 L40 16 L40 32 L24 40 L8 32 L8 16 Z" stroke="#233457" stroke-width="2"/>
+            <path d="M24 8 V40 M8 16 L40 32 M40 16 L8 32" stroke="#bd9257" stroke-width="1.4"/>
+          </svg>
+          <h3>Metodologías ágiles</h3>
+          <p>Scrum, Kanban y XP explicadas con roles, artefactos y ceremonias, más criterios para elegir un enfoque según el proyecto.</p>
+          <a class="card-link" href="indexUS8.html">Explorar metodologías <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="card" id="tradicionales">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none">
+            <path d="M8 14h32M8 24h32M8 34h20" stroke="#233457" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="40" cy="34" r="4" stroke="#bd9257" stroke-width="2"/>
+          </svg>
+          <h3>Modelos tradicionales</h3>
+          <p>Cascada, en V e incremental: cuándo tuvieron sentido, qué problemas resolvían y dónde siguen siendo la mejor opción.</p>
+          <a class="card-link" href="indexUS6y7.html">Comparar e ilustrar modelos <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="card" id="casos">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none">
+            <rect x="10" y="8" width="28" height="32" rx="1" stroke="#233457" stroke-width="2"/>
+            <path d="M16 18h16M16 24h16M16 30h10" stroke="#bd9257" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Casos prácticos</h3>
+          <p>Ejemplos aplicados y ejercicios resueltos paso a paso, pensados para llevar la teoría a un contexto de proyecto real.</p>
+          <a class="card-link" href="indexUS12.html#ejercicios">Resolver ejercicios <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="card" id="recursos">
+          <svg class="card-icon" viewBox="0 0 48 48" fill="none">
+            <path d="M24 6 L24 30 M24 30 L14 22 M24 30 L34 22" stroke="#bd9257" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M10 32 v6 a2 2 0 0 0 2 2 h24 a2 2 0 0 0 2-2 v-6" stroke="#233457" stroke-width="2" fill="none"/>
+          </svg>
+          <h3>Recursos y herramientas</h3>
+          <p>Glosario, respuestas, referencias y actividades para autoevaluarte a medida que avanzás en el contenido.</p>
+          <a class="card-link" href="indexUS12.html#glosario">Explorar recursos de aprendizaje <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Un resumen numérico muestra los temas y recursos disponibles. -->
+  <section class="stat-strip" aria-label="Alcance del sitio">
+    <div class="wrap">
+      <div class="stat"><b>2</b><span>familias de procesos: tradicionales y ágiles</span></div>
+      <div class="stat"><b>6</b><span>metodologías desarrolladas en profundidad</span></div>
+      <div class="stat"><b>+30</b><span>ejemplos y casos prácticos</span></div>
+      <div class="stat"><b>100%</b><span>gratuito y en español</span></div>
+    </div>
+  </section>
+</main>
+
+<!-- El pie cierra la página con la marca y la información del proyecto. -->
+<footer class="site" id="comunidad">
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="logo2.png" alt="Logotipo Max Quality">
+      Max Quality
+    </div>
+    <small>&copy; 2026 Max Quality — Proyecto académico de Sistemas de Gestión de Calidad.</small>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

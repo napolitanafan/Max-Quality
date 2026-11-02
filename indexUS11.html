@@ -1,0 +1,134 @@
+<!doctype html>
+<!-- Introducción a Kanban y al uso de la visualización para mejorar el flujo de trabajo. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban — Max Quality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="stylesheet" href="us-pages.css" />
+    <link rel="stylesheet" href="us-theme.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="us-theme">
+    <header class="site inner-header">
+      <div class="site-bar">
+        <div class="brand">
+          <img src="logo.png" alt="Logotipo Max Quality" /><span
+            class="brand-name"
+            >Max Quality<span>Sistema de Gestión de Calidad</span></span
+          >
+        </div>
+        <nav class="primary" aria-label="Navegación de esta página">
+          <ul>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#comunidad">Pie de página</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido" class="page us-page-content">
+      <p class="crumb">Metodologías ágiles / <span>Kanban</span></p>
+      <p class="eyebrow">Kanban · gestionar el flujo</p>
+      <h1>Visualizar para mejorar</h1>
+      <p class="dek">
+        El tablero hace visible el trabajo y facilita detectar bloqueos, limitar
+        tareas en curso y mejorar el proceso.
+      </p>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-kicker">Kanban</span>
+          <div>
+            <h2>Tablero de ejemplo</h2>
+            <p>
+              Columnas explicativas con tarjetas de trabajo y un indicador del
+              límite de trabajo en curso.
+            </p>
+          </div>
+        </div>
+        <div
+          class="board"
+          role="group"
+          aria-label="Tablero Kanban con las columnas Por hacer, En proceso y Hecho"
+        >
+          <section class="board-column">
+            <h3 class="board-title">Por hacer <span>02</span></h3>
+            <article class="board-card">
+              <strong>Definir criterios de calidad</strong>
+              <p>Acordar medidas de aceptación para el incremento.</p>
+              <span class="wip">PRODUCTO · PRIORIDAD MEDIA</span>
+            </article>
+            <article class="board-card">
+              <strong>Revisar feedback</strong>
+              <p>Ordenar sugerencias de usuarios.</p>
+              <span class="wip">ANÁLISIS · PRIORIDAD BAJA</span>
+            </article>
+          </section>
+          <section class="board-column">
+            <h3 class="board-title">En proceso <span>01 / WIP 3</span></h3>
+            <article class="board-card">
+              <strong>Prototipo de navegación</strong>
+              <p>Validar la estructura antes del desarrollo.</p>
+              <span class="wip">DISEÑO · EQUIPO</span>
+            </article>
+          </section>
+          <section class="board-column">
+            <h3 class="board-title">Hecho <span>01</span></h3>
+            <article class="board-card">
+              <strong>Mapa de contenidos</strong>
+              <p>Secciones y recorridos documentados.</p>
+              <span class="wip">COMPLETADO · CICLO 02</span>
+            </article>
+          </section>
+        </div>
+        <aside class="kanban-note">
+          <b>Política visual:</b> si En proceso llega a su límite, el equipo
+          prioriza terminar trabajo iniciado antes de empezar tareas nuevas. El
+          WIP ayuda a revelar cuellos de botella.
+        </aside>
+      </section>
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-kicker">PRÁCTICAS</span>
+          <div><h2>Elementos del método</h2></div>
+        </div>
+        <div class="topic-grid">
+          <article class="surface topic-card">
+            <h3>Visualizar</h3>
+            <p>
+              Representar etapas y trabajo para que el estado sea compartido.
+            </p>
+          </article>
+          <article class="surface topic-card">
+            <h3>Limitar WIP</h3>
+            <p>Evitar sobrecarga y mejorar el foco del equipo.</p>
+          </article>
+          <article class="surface topic-card">
+            <h3>Gestionar el flujo</h3>
+            <p>Observar bloqueos y reducir tiempos de espera.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site" id="comunidad">
+      <div class="wrap">
+        <div class="foot-brand">
+          <img src="logo2.png" alt="Logotipo Max Quality" />
+          Max Quality
+        </div>
+        <small
+          >&copy; 2026 Max Quality — Proyecto académico de Sistemas de Gestión
+          de Calidad.</small
+        >
+      </div>
+    </footer>
+  </body>
+</html>

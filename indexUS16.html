@@ -1,0 +1,220 @@
+<!doctype html>
+<!-- Presentación del equipo, sus roles y el propósito del proyecto Max Quality. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre nosotros — Max Quality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="stylesheet" href="us-pages.css" />
+    <link rel="stylesheet" href="us-theme.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="us-theme">
+    <header class="site inner-header">
+      <div class="site-bar">
+        <div class="brand">
+          <img src="logo.png" alt="Logotipo Max Quality" /><span
+            class="brand-name"
+            >Max Quality<span>Sistema de Gestión de Calidad</span></span
+          >
+        </div>
+        <nav class="primary" aria-label="Navegación de esta página">
+          <ul>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#comunidad">Pie de página</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido" class="page us-page-content about-page">
+      <p class="crumb">Max Quality / <span>Sobre nosotros</span></p>
+      <p class="eyebrow">Max Quality · equipo académico</p>
+      <h1>Un equipo que aprende compartiendo</h1>
+      <p class="dek">
+        Este proyecto académico acerca conceptos de calidad y desarrollo de
+        software a quienes están aprendiendo sobre la disciplina.
+      </p>
+
+      <section class="team-photo-section" aria-labelledby="team-photo-title">
+        <div class="team-photo-frame" data-team-photo>
+          <img
+            class="team-photo"
+            src="images/FOTO_MQ_TEAM.jpe"
+            alt="Foto grupal del equipo Max Quality"
+            data-team-image
+          />
+          <div class="team-photo-placeholder" data-team-photo-placeholder hidden>
+            <span class="team-photo-icon" aria-hidden="true">✦</span>
+            <strong>No se pudo cargar la foto del equipo</strong>
+            <span>
+              Revisá que la imagen del equipo esté disponible en la carpeta
+              images.
+            </span>
+          </div>
+          <div class="team-photo-brand" aria-label="Logo Max Quality">
+            <img src="logo.png" alt="" />
+            <span>Max Quality</span>
+          </div>
+        </div>
+        <div class="team-photo-caption">
+          <div>
+            <span class="small-label">NUESTRO EQUIPO</span>
+            <h2 id="team-photo-title">Personas detrás del proyecto</h2>
+            <p>
+              Esta es la foto grupal de Max Quality y forma parte de la historia
+              de nuestro equipo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-kicker">QUIÉNES SOMOS</span>
+          <div>
+            <h2>Perfiles del equipo</h2>
+            <p>
+              Un equipo con responsabilidades diferentes y un objetivo común:
+              compartir lo que aprendemos sobre calidad de software.
+            </p>
+          </div>
+        </div>
+        <div class="team-grid">
+          <article class="surface team-card" data-team-member>
+            <div class="team-avatar-wrap">
+              <span class="avatar" aria-hidden="true">SM</span>
+              <img class="team-member-photo" src="images/FOTO_SCRUM_MASTER.jpe" alt="Foto del Scrum Master" data-member-photo />
+            </div>
+            <span class="team-member-number">01 · ORGANIZACIÓN</span>
+            <h3>Nombre del integrante</h3>
+            <span class="team-role">Scrum Master</span>
+            <p>
+              Motivación: facilitar la colaboración y el aprendizaje continuo
+              del equipo.
+            </p>
+            <small>Institución académica · Proyecto Max Quality</small>
+            <div class="team-member-detail" data-member-detail hidden>
+              <b>Aporte al proyecto</b>
+              <p>Facilita acuerdos, organiza el trabajo y promueve la mejora continua.</p>
+            </div>
+          </article>
+          <article class="surface team-card" data-team-member>
+            <div class="team-avatar-wrap">
+              <span class="avatar" aria-hidden="true">DI</span>
+              <img class="team-member-photo" src="images/FOTO_DISEÑADOR.jpe" alt="Foto del diseñador o diseñadora" data-member-photo />
+            </div>
+            <span class="team-member-number">02 · EXPERIENCIA</span>
+            <h3>Nombre del integrante</h3>
+            <span class="team-role">Diseñador/a</span>
+            <p>
+              Motivación: acercar contenidos técnicos mediante una experiencia
+              clara y accesible.
+            </p>
+            <small>Institución académica · Proyecto Max Quality</small>
+            <div class="team-member-detail" data-member-detail hidden>
+              <b>Aporte al proyecto</b>
+              <p>Organiza la información y diseña una experiencia visual clara, accesible y adaptable.</p>
+            </div>
+          </article>
+          <article class="surface team-card" data-team-member>
+            <div class="team-avatar-wrap">
+              <span class="avatar" aria-hidden="true">PR</span>
+              <img class="team-member-photo" src="images/FOTO_PROGRAMADOR.jpe" alt="Foto del programador o programadora" data-member-photo />
+            </div>
+            <span class="team-member-number">03 · CONSTRUCCIÓN</span>
+            <h3>Nombre del integrante</h3>
+            <span class="team-role">Programador/a</span>
+            <p>
+              Motivación: construir recursos digitales útiles y mantenibles.
+            </p>
+            <small>Institución académica · Proyecto Max Quality</small>
+            <div class="team-member-detail" data-member-detail hidden>
+              <b>Aporte al proyecto</b>
+              <p>Implementa las páginas y sus interacciones para que el sitio sea funcional y mantenible.</p>
+            </div>
+          </article>
+          <article class="surface team-card" data-team-member>
+            <div class="team-avatar-wrap">
+              <span class="avatar" aria-hidden="true">QA</span>
+              <img class="team-member-photo" src="images/FOTO_TESTER.jpe" alt="Foto del tester" data-member-photo />
+            </div>
+            <span class="team-member-number">04 · CALIDAD</span>
+            <h3>Nombre del integrante</h3>
+            <span class="team-role">Tester</span>
+            <p>
+              Motivación: promover calidad mediante prevención, evaluación y
+              mejora.
+            </p>
+            <small>Institución académica · Proyecto Max Quality</small>
+            <div class="team-member-detail" data-member-detail hidden>
+              <b>Aporte al proyecto</b>
+              <p>Prueba recorridos, detecta problemas de uso y verifica que cada mejora funcione.</p>
+            </div>
+          </article>
+        </div>
+        <p class="team-selection-status" data-team-selection-status role="status" aria-live="polite">
+          Elegí un perfil para conocer su aporte al proyecto.
+        </p>
+      </section>
+
+      <section class="content-section about-project-section">
+        <div class="section-heading">
+          <span class="section-kicker">NUESTRO PROPÓSITO</span>
+          <div>
+            <h2>Calidad que se aprende construyendo</h2>
+            <p>
+              Max Quality es una iniciativa educativa que reúne teoría,
+              comparaciones y ejercicios para comprender cómo se construye
+              software de calidad.
+            </p>
+          </div>
+        </div>
+        <div class="about-values-grid">
+          <article class="surface about-value-card">
+            <span class="about-value-icon" aria-hidden="true">01</span>
+            <h3>Aprender</h3>
+            <p>Convertimos conceptos técnicos en explicaciones y ejemplos fáciles de explorar.</p>
+          </article>
+          <article class="surface about-value-card">
+            <span class="about-value-icon" aria-hidden="true">02</span>
+            <h3>Colaborar</h3>
+            <p>Compartimos responsabilidades, ideas y descubrimientos durante el desarrollo.</p>
+          </article>
+          <article class="surface about-value-card">
+            <span class="about-value-icon" aria-hidden="true">03</span>
+            <h3>Mejorar</h3>
+            <p>Revisamos el resultado y usamos cada desafío como oportunidad de mejora.</p>
+          </article>
+        </div>
+        <div class="about-note">
+          <p>
+            <b>Institución:</b> proyecto académico de Sistemas de Gestión de
+            Calidad del Software · <b>Equipo:</b> Max Quality · <b>Propósito:</b>
+            aprender haciendo y compartir herramientas para crear mejores
+            productos digitales.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="site" id="comunidad">
+      <div class="wrap">
+        <div class="foot-brand">
+          <img src="logo2.png" alt="Logotipo Max Quality" />
+          Max Quality
+        </div>
+        <small
+          >&copy; 2026 Max Quality — Proyecto académico de Sistemas de Gestión
+          de Calidad.</small
+        >
+      </div>
+    </footer>
+  </body>
+</html>

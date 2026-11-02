@@ -1,0 +1,533 @@
+<!doctype html>
+<!-- Encuesta que orienta la elección de una metodología según las necesidades del proyecto. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Recorre un asistente visual para orientar la elección de una metodología de desarrollo."
+    />
+    <title>Encuesta de preferencias metodológicas — Max Quality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="stylesheet" href="us-pages.css" />
+    <link rel="stylesheet" href="us-theme.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="survey-page us-theme">
+    <header class="site inner-header">
+      <div class="site-bar">
+        <div class="brand">
+          <img src="logo.png" alt="Logotipo Max Quality" />
+          <span class="brand-name">
+            Max Quality
+            <span>Sistema de Gestión de Calidad</span>
+          </span>
+        </div>
+        <nav class="primary" aria-label="Navegación de esta página">
+          <ul>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#comunidad">Pie de página</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido" class="page us-page-content">
+      <p class="crumb">
+        Herramientas de aprendizaje /
+        <span>Encuesta de preferencias metodológicas</span>
+      </p>
+      <p class="eyebrow">Herramienta prioritaria · Asistente</p>
+      <h1>Encontrar el enfoque adecuado</h1>
+      <p class="dek">
+        Respondé sobre tu proyecto y explorá qué criterios suelen orientar la
+        elección de una metodología.
+      </p>
+
+      <section class="content-section" aria-labelledby="survey-title">
+        <div class="section-heading">
+          <span class="section-kicker"
+            >Encuesta de preferencias metodológicas</span
+          >
+          <div>
+            <h2 id="survey-title">Contanos sobre tu proyecto</h2>
+            <p>
+              Cuatro pasos para describir tu proyecto y un resultado
+              personalizado con puntajes, afinidades y criterios explicados.
+            </p>
+          </div>
+        </div>
+
+        <form class="wizard-tool">
+          <fieldset class="wizard-step-picker">
+            <legend class="visually-hidden">Pasos de la encuesta</legend>
+
+            <input
+              class="wizard-stage-input"
+              type="radio"
+              name="wizard-stage"
+              id="wizard-stage-1"
+              value="1"
+              aria-label="Paso 1: Contexto"
+              checked
+            />
+            <input
+              class="wizard-stage-input"
+              type="radio"
+              name="wizard-stage"
+              id="wizard-stage-2"
+              value="2"
+              aria-label="Paso 2: Requisitos"
+            />
+            <input
+              class="wizard-stage-input"
+              type="radio"
+              name="wizard-stage"
+              id="wizard-stage-3"
+              value="3"
+              aria-label="Paso 3: Equipo"
+            />
+            <input
+              class="wizard-stage-input"
+              type="radio"
+              name="wizard-stage"
+              id="wizard-stage-4"
+              value="4"
+              aria-label="Paso 4: Orientación"
+            />
+
+            <ol class="wizard-steps" aria-label="Elegí un paso de la encuesta">
+              <li>
+                <label for="wizard-stage-1">
+                  <span class="wizard-step-number">01</span>
+                  <span class="wizard-step-name">Contexto</span>
+                </label>
+              </li>
+              <li>
+                <label for="wizard-stage-2">
+                  <span class="wizard-step-number">02</span>
+                  <span class="wizard-step-name">Requisitos</span>
+                </label>
+              </li>
+              <li>
+                <label for="wizard-stage-3">
+                  <span class="wizard-step-number">03</span>
+                  <span class="wizard-step-name">Equipo</span>
+                </label>
+              </li>
+              <li>
+                <label for="wizard-stage-4">
+                  <span class="wizard-step-number">04</span>
+                  <span class="wizard-step-name">Orientación</span>
+                </label>
+              </li>
+            </ol>
+
+            <div class="wizard-progress">
+              <div
+                class="wizard-progress-track"
+                role="progressbar"
+                aria-label="Progreso de la encuesta"
+                aria-valuemin="1"
+                aria-valuemax="4"
+                aria-valuenow="1"
+              >
+                <span></span>
+              </div>
+              <span class="wizard-progress-label">
+                Paso
+                <strong class="wizard-current-step">1</strong>
+                de 4
+              </span>
+            </div>
+            <p class="wizard-navigation-hint">
+              Seleccioná una etapa para avanzar o volver sin perder tus
+              respuestas.
+            </p>
+
+            <div class="wizard-panels">
+              <section
+                class="wizard-panel"
+                data-wizard-step="1"
+                aria-labelledby="wizard-context-title"
+              >
+                <div class="wizard-panel-heading">
+                  <span class="small-label">PASO 1 · CONTEXTO</span>
+                  <h3 id="wizard-context-title">
+                    ¿Qué tipo de proyecto estás desarrollando?
+                  </h3>
+                  <p>
+                    Pensá en el producto y el entorno en el que se utilizará.
+                  </p>
+                </div>
+                <fieldset class="wizard-question">
+                  <legend>Elegí la descripción que más se acerca</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input
+                        type="radio"
+                        name="project-context"
+                        value="producto"
+                      />
+                      <span>
+                        <strong>Producto nuevo</strong>
+                        <small>
+                          Estamos construyendo y validando una solución.
+                        </small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input
+                        type="radio"
+                        name="project-context"
+                        value="evolucion"
+                      />
+                      <span>
+                        <strong>Evolución de un sistema</strong>
+                        <small>
+                          Mantenemos o ampliamos un producto existente.
+                        </small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input
+                        type="radio"
+                        name="project-context"
+                        value="regulado"
+                      />
+                      <span>
+                        <strong>Entorno regulado o crítico</strong>
+                        <small>
+                          Trazabilidad, evidencia o aprobaciones son esenciales.
+                        </small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+              </section>
+
+              <section
+                class="wizard-panel"
+                data-wizard-step="2"
+                aria-labelledby="wizard-requirements-title"
+              >
+                <div class="wizard-panel-heading">
+                  <span class="small-label">PASO 2 · REQUISITOS</span>
+                  <h3 id="wizard-requirements-title">
+                    ¿Cuánta incertidumbre hay en los requisitos?
+                  </h3>
+                  <p>
+                    Considerá cuánto cambian las prioridades y qué impacto
+                    tendría una falla importante.
+                  </p>
+                </div>
+                <fieldset class="wizard-question">
+                  <legend>¿Qué situación describe mejor los requisitos?</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input
+                        type="radio"
+                        name="requirements"
+                        value="estables"
+                      />
+                      <span>
+                        <strong>Están definidos y son estables</strong>
+                        <small>
+                          Hay acuerdos claros y se espera poco cambio.
+                        </small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="requirements" value="cambian" />
+                      <span>
+                        <strong>Pueden cambiar con el feedback</strong>
+                        <small>
+                          Queremos revisar prioridades durante el desarrollo.
+                        </small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input
+                        type="radio"
+                        name="requirements"
+                        value="descubrir"
+                      />
+                      <span>
+                        <strong>Estamos descubriendo qué construir</strong>
+                        <small>
+                          El aprendizaje y la validación temprana son clave.
+                        </small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+                <fieldset class="wizard-question">
+                  <legend>¿Qué impacto tendría una falla importante?</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input type="radio" name="risk" value="alto" />
+                      <span>
+                        <strong>Alto o crítico</strong>
+                        <small>Se necesita evidencia, prevención y trazabilidad rigurosas.</small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="risk" value="moderado" />
+                      <span>
+                        <strong>Moderado</strong>
+                        <small>Hay controles definidos, con margen para adaptar el proceso.</small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="risk" value="bajo" />
+                      <span>
+                        <strong>Bajo y reversible</strong>
+                        <small>Podemos validar cambios en ciclos cortos y aprender pronto.</small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+              </section>
+
+              <section
+                class="wizard-panel"
+                data-wizard-step="3"
+                aria-labelledby="wizard-team-title"
+              >
+                <div class="wizard-panel-heading">
+                  <span class="small-label">PASO 3 · EQUIPO Y ENTREGA</span>
+                  <h3 id="wizard-team-title">
+                    ¿Cómo trabaja el equipo y con qué frecuencia necesita
+                    entregar?
+                  </h3>
+                  <p>
+                    La colaboración, la organización del equipo y su capacidad
+                    técnica también influyen.
+                  </p>
+                </div>
+                <fieldset class="wizard-question">
+                  <legend>¿Qué ritmo de entrega esperan?</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input type="radio" name="delivery" value="hitos" />
+                      <span>
+                        <strong>Hitos planificados</strong>
+                        <small>
+                          Entregas coordinadas con etapas y aprobaciones.
+                        </small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="delivery" value="frecuente" />
+                      <span>
+                        <strong>Entregas frecuentes</strong>
+                        <small>
+                          Buscamos feedback y valor en ciclos cortos.
+                        </small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="delivery" value="continuo" />
+                      <span>
+                        <strong>Demanda continua</strong>
+                        <small>
+                          El equipo recibe y prioriza trabajo continuamente.
+                        </small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+                <fieldset class="wizard-question">
+                  <legend>¿Cuántas personas integran el equipo?</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input type="radio" name="team-size" value="pequeno" />
+                      <span><strong>Equipo pequeño</strong><small>Hasta cinco personas colaboran de forma cercana.</small></span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="team-size" value="mediano" />
+                      <span><strong>Equipo mediano</strong><small>Un equipo con varias especialidades coordinadas.</small></span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="team-size" value="grande" />
+                      <span><strong>Equipo grande o distribuido</strong><small>Hay más coordinación entre personas o subequipos.</small></span>
+                    </label>
+                  </div>
+                </fieldset>
+                <fieldset class="wizard-question wizard-question-documentation">
+                  <legend>¿Qué nivel de documentación necesita el proyecto?</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input type="radio" name="documentation" value="formal" />
+                      <span><strong>Formal y trazable</strong><small>Se requieren registros, evidencia y aprobaciones.</small></span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="documentation" value="equilibrada" />
+                      <span><strong>Equilibrada</strong><small>Documentamos decisiones y lo necesario para colaborar.</small></span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="documentation" value="ligera" />
+                      <span><strong>Ligera y evolutiva</strong><small>Priorizamos comunicación directa y documentación útil.</small></span>
+                    </label>
+                  </div>
+                </fieldset>
+                <fieldset class="wizard-question">
+                  <legend>¿Con qué frecuencia pueden colaborar usuarios o referentes del negocio?</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input type="radio" name="collaboration" value="frecuente" />
+                      <span>
+                        <strong>Frecuentemente</strong>
+                        <small>Hay disponibilidad para revisar avances y priorizar.</small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="collaboration" value="periodica" />
+                      <span>
+                        <strong>En momentos acordados</strong>
+                        <small>La colaboración es posible en hitos o revisiones periódicas.</small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="collaboration" value="limitada" />
+                      <span>
+                        <strong>Es limitada</strong>
+                        <small>El equipo debe trabajar con acuerdos y requisitos previamente definidos.</small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+                <fieldset class="wizard-question">
+                  <legend>¿Qué prácticas de ingeniería puede sostener el equipo?</legend>
+                  <div class="wizard-answer-grid">
+                    <label class="wizard-answer">
+                      <input type="radio" name="engineering" value="avanzadas" />
+                      <span>
+                        <strong>Automatización y feedback frecuente</strong>
+                        <small>Podemos mantener pruebas, integración y refactorización frecuentes.</small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="engineering" value="parciales" />
+                      <span>
+                        <strong>Prácticas en desarrollo</strong>
+                        <small>Hay algunas pruebas y podemos fortalecerlas gradualmente.</small>
+                      </span>
+                    </label>
+                    <label class="wizard-answer">
+                      <input type="radio" name="engineering" value="basicas" />
+                      <span>
+                        <strong>Controles mayormente manuales</strong>
+                        <small>Las prácticas técnicas necesitan planificación y desarrollo.</small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+              </section>
+
+              <section
+                class="wizard-panel wizard-results-panel"
+                data-wizard-step="4"
+                aria-labelledby="wizard-results-title"
+              >
+                <div class="wizard-panel-heading">
+                  <span class="small-label">PASO 4 · ORIENTACIÓN</span>
+                  <h3 id="wizard-results-title">
+                    Tu perfil metodológico
+                  </h3>
+                  <p>
+                    La orientación compara Scrum, Kanban y Cascada a partir de
+                    las señales que describiste; revisá el puntaje y las razones.
+                  </p>
+                </div>
+                <div class="wizard-profile" aria-live="polite">
+                  <h4>Resumen de tu proyecto</h4>
+                  <ul class="wizard-profile-list"></ul>
+                </div>
+                <p class="wizard-score-explanation">
+                  El porcentaje representa los puntos obtenidos sobre el máximo
+                  posible para tus respuestas. Es una orientación comparativa:
+                  no expresa una probabilidad de éxito ni reemplaza el análisis
+                  del equipo y del contexto.
+                </p>
+                <div class="recommendation-grid">
+                  <article class="recommendation-card">
+                    <span class="recommendation-mark" aria-hidden="true"
+                      >01</span
+                    >
+                    <div>
+                      <h4>Requisitos estables y alta trazabilidad</h4>
+                      <p>
+                        Considerá Cascada o el modelo en V cuando las etapas,
+                        aprobaciones y evidencias son importantes.
+                      </p>
+                    </div>
+                    <span class="recommendation-tags"
+                      >CASCADA · MODELO EN V</span
+                    >
+                  </article>
+                  <article class="recommendation-card">
+                    <span class="recommendation-mark" aria-hidden="true"
+                      >02</span
+                    >
+                    <div>
+                      <h4>Prioridades que evolucionan</h4>
+                      <p>
+                        Scrum, XP o un enfoque incremental pueden ayudar a
+                        revisar el producto y aprender en ciclos frecuentes.
+                      </p>
+                    </div>
+                    <span class="recommendation-tags"
+                      >SCRUM · XP · INCREMENTAL</span
+                    >
+                  </article>
+                  <article class="recommendation-card">
+                    <span class="recommendation-mark" aria-hidden="true"
+                      >03</span
+                    >
+                    <div>
+                      <h4>Demanda continua y flujo de trabajo</h4>
+                      <p>
+                        Kanban puede ser útil para visualizar solicitudes,
+                        limitar el trabajo en curso y mejorar el flujo.
+                      </p>
+                    </div>
+                    <span class="recommendation-tags">KANBAN</span>
+                  </article>
+                </div>
+                <aside class="recommendation-caveat">
+                  <strong>Importante</strong>
+                  <p>
+                    Contrastá esta orientación con las restricciones reales,
+                    los riesgos y la experiencia del equipo antes de decidir.
+                  </p>
+                </aside>
+              </section>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site" id="comunidad">
+      <div class="wrap">
+        <div class="foot-brand">
+          <img src="logo2.png" alt="Logotipo Max Quality" />
+          Max Quality
+        </div>
+        <small
+          >&copy; 2026 Max Quality — Proyecto académico de Sistemas de Gestión
+          de Calidad.</small
+        >
+      </div>
+    </footer>
+  </body>
+</html>

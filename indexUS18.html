@@ -1,0 +1,286 @@
+<!doctype html>
+<!-- Comparador de metodologías para consultar sus diferencias en una tabla. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Compara visualmente metodologías tradicionales y ágiles según sus características."
+    />
+    <title>Comparador de metodologías — Max Quality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="stylesheet" href="us-pages.css" />
+    <link rel="stylesheet" href="us-theme.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="comparison-page us-theme">
+    <header class="site inner-header">
+      <div class="site-bar">
+        <div class="brand">
+          <img src="logo.png" alt="Logotipo Max Quality" />
+          <span class="brand-name">
+            Max Quality
+            <span>Sistema de Gestión de Calidad</span>
+          </span>
+        </div>
+        <nav class="primary" aria-label="Navegación de esta página">
+          <ul>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#comunidad">Pie de página</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido" class="page us-page-content">
+      <p class="crumb">
+        Herramientas de aprendizaje / <span>Comparador de metodologías</span>
+      </p>
+      <p class="eyebrow">Herramienta prioritaria · Comparador</p>
+      <h1>Comparar metodologías</h1>
+      <p class="dek">
+        Seleccioná dos o más enfoques para contrastar cómo organizan el trabajo,
+        gestionan los cambios y entregan valor.
+      </p>
+
+      <section class="content-section" aria-labelledby="comparator-title">
+        <div class="section-heading">
+          <span class="section-kicker">Comparador de metodologías</span>
+          <div>
+            <h2 id="comparator-title">Una comparación a tu medida</h2>
+            <p>
+              Elegí metodologías y consultá sus diferencias en una tabla
+              preparada para lectura en escritorio y móvil.
+            </p>
+          </div>
+        </div>
+
+        <div class="surface comparison-tool">
+          <div class="comparison-tool-heading">
+            <div>
+              <span class="small-label">01 · SELECCIÓN</span>
+              <h3>¿Qué enfoques querés comparar?</h3>
+              <p id="comparison-help">
+                Marcá o desmarcá opciones. La tabla se actualiza visualmente
+                según tu selección.
+              </p>
+            </div>
+            <span class="story-tag">6 ENFOQUES</span>
+          </div>
+
+          <fieldset
+            class="comparison-options"
+            aria-describedby="comparison-help"
+          >
+            <legend class="visually-hidden">
+              Seleccioná las metodologías para comparar
+            </legend>
+            <label class="comparison-option">
+              <input
+                id="compare-cascada"
+                type="checkbox"
+                name="metodologia"
+                value="cascada"
+              />
+              <span class="comparison-option-icon" aria-hidden="true">C</span>
+              <span>
+                <strong>Cascada</strong>
+                <small>Secuencial</small>
+              </span>
+            </label>
+            <label class="comparison-option">
+              <input
+                id="compare-v"
+                type="checkbox"
+                name="metodologia"
+                value="v"
+              />
+              <span class="comparison-option-icon" aria-hidden="true">V</span>
+              <span>
+                <strong>Modelo en V</strong>
+                <small>Verificación planificada</small>
+              </span>
+            </label>
+            <label class="comparison-option">
+              <input
+                id="compare-incremental"
+                type="checkbox"
+                name="metodologia"
+                value="incremental"
+              />
+              <span class="comparison-option-icon" aria-hidden="true">I</span>
+              <span>
+                <strong>Incremental</strong>
+                <small>Entrega por partes</small>
+              </span>
+            </label>
+            <label class="comparison-option">
+              <input
+                id="compare-scrum"
+                type="checkbox"
+                name="metodologia"
+                value="scrum"
+              />
+              <span class="comparison-option-icon" aria-hidden="true">S</span>
+              <span>
+                <strong>Scrum</strong>
+                <small>Sprints e incrementos</small>
+              </span>
+            </label>
+            <label class="comparison-option">
+              <input
+                id="compare-kanban"
+                type="checkbox"
+                name="metodologia"
+                value="kanban"
+              />
+              <span class="comparison-option-icon" aria-hidden="true">K</span>
+              <span>
+                <strong>Kanban</strong>
+                <small>Flujo continuo</small>
+              </span>
+            </label>
+            <label class="comparison-option">
+              <input
+                id="compare-xp"
+                type="checkbox"
+                name="metodologia"
+                value="xp"
+              />
+              <span class="comparison-option-icon" aria-hidden="true">XP</span>
+              <span>
+                <strong>XP</strong>
+                <small>Prácticas de ingeniería</small>
+              </span>
+            </label>
+          </fieldset>
+
+          <div class="comparison-results">
+            <div class="comparison-results-heading">
+              <div>
+                <span class="small-label">02 · RESULTADO</span>
+                <h3>Matriz comparativa</h3>
+              </div>
+              <span class="comparison-scroll-hint">Deslizá para ver más →</span>
+            </div>
+            <div
+              class="table-wrap comparison-table-wrap"
+              role="region"
+              aria-label="Tabla comparativa de metodologías; desplazamiento horizontal disponible"
+              tabindex="0"
+            >
+              <table class="comparison-table">
+                <caption>
+                  Compará enfoque, planificación, cambios, entregas y
+                  organización.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Característica</th>
+                    <th scope="col" data-method="cascada">Cascada</th>
+                    <th scope="col" data-method="v">Modelo en V</th>
+                    <th scope="col" data-method="incremental">Incremental</th>
+                    <th scope="col" data-method="scrum">Scrum</th>
+                    <th scope="col" data-method="kanban">Kanban</th>
+                    <th scope="col" data-method="xp">XP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Enfoque</th>
+                    <td data-method="cascada">Secuencial por fases</td>
+                    <td data-method="v">Secuencial con pruebas asociadas</td>
+                    <td data-method="incremental">Iteraciones e incrementos</td>
+                    <td data-method="scrum">Iterativo por Sprints</td>
+                    <td data-method="kanban">Flujo continuo</td>
+                    <td data-method="xp">Iterativo con foco técnico</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Planificación</th>
+                    <td data-method="cascada">Principalmente inicial</td>
+                    <td data-method="v">Plan por fases y niveles de prueba</td>
+                    <td data-method="incremental">Por iteración y prioridad</td>
+                    <td data-method="scrum">Al inicio de cada Sprint</td>
+                    <td data-method="kanban">Continua según capacidad</td>
+                    <td data-method="xp">Frecuente y colaborativa</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Respuesta al cambio</th>
+                    <td data-method="cascada">Más costosa tras cada fase</td>
+                    <td data-method="v">Requiere revisar plan y pruebas</td>
+                    <td data-method="incremental">
+                      Se incorpora en ciclos futuros
+                    </td>
+                    <td data-method="scrum">Se prioriza en el backlog</td>
+                    <td data-method="kanban">Se reordena el flujo</td>
+                    <td data-method="xp">Feedback frecuente al equipo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Entrega de valor</th>
+                    <td data-method="cascada">Generalmente al final</td>
+                    <td data-method="v">Al completar etapas planificadas</td>
+                    <td data-method="incremental">Por incrementos</td>
+                    <td data-method="scrum">Al final de cada Sprint</td>
+                    <td data-method="kanban">Cuando el trabajo está listo</td>
+                    <td data-method="xp">En entregas pequeñas</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Organización</th>
+                    <td data-method="cascada">Fases y entregables</td>
+                    <td data-method="v">Desarrollo y pruebas vinculados</td>
+                    <td data-method="incremental">Ciclos priorizados</td>
+                    <td data-method="scrum">Roles, eventos y artefactos</td>
+                    <td data-method="kanban">Tablero y límites WIP</td>
+                    <td data-method="xp">Prácticas de ingeniería</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Conviene cuando...</th>
+                    <td data-method="cascada">Los requisitos son estables</td>
+                    <td data-method="v">La trazabilidad es esencial</td>
+                    <td data-method="incremental">
+                      Se puede dividir el alcance
+                    </td>
+                    <td data-method="scrum">
+                      Se necesita inspección periódica
+                    </td>
+                    <td data-method="kanban">Se gestiona demanda continua</td>
+                    <td data-method="xp">La calidad técnica es prioritaria</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <aside class="comparison-note">
+            <span aria-hidden="true">i</span>
+            <p>
+              <strong>Una guía, no una receta.</strong> La elección depende de
+              requisitos, riesgos, equipo, regulación y contexto del proyecto.
+            </p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site" id="comunidad">
+      <div class="wrap">
+        <div class="foot-brand">
+          <img src="logo2.png" alt="Logotipo Max Quality" />
+          Max Quality
+        </div>
+        <small
+          >&copy; 2026 Max Quality — Proyecto académico de Sistemas de Gestión
+          de Calidad.</small
+        >
+      </div>
+    </footer>
+  </body>
+</html>

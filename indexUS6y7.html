@@ -1,0 +1,378 @@
+<!doctype html>
+<!-- Comparación de modelos tradicionales de desarrollo con ilustraciones para acompañar las explicaciones. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelos tradicionales: comparación e ilustraciones — Max Quality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="stylesheet" href="us-pages.css" />
+    <link rel="stylesheet" href="us-theme.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="us-theme">
+    <header class="site inner-header">
+      <div class="site-bar">
+        <div class="brand">
+          <img src="logo.png" alt="Logotipo Max Quality" /><span
+            class="brand-name"
+            >Max Quality<span>Sistema de Gestión de Calidad</span></span
+          >
+        </div>
+        <nav class="primary" aria-label="Navegación de esta página">
+          <ul>
+            <li><a href="#comparacion">Comparación</a></li>
+            <li><a href="#ilustraciones">Ilustraciones</a></li>
+            <li><a href="#comunidad">Pie de página</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido" class="page us-page-content">
+      <p class="crumb">
+        Procesos de desarrollo /
+        <span>Modelos tradicionales: comparación e ilustraciones</span>
+      </p>
+      <p class="eyebrow">Modelos tradicionales · comparación e ilustraciones</p>
+      <h1>Comparar y visualizar modelos de desarrollo</h1>
+      <p class="dek">
+        Cascada, modelo en V e iterativo e incremental: ventajas, limitaciones y
+        contextos donde cada uno puede resultar adecuado, junto con diagramas
+        para comprender su funcionamiento.
+      </p>
+
+      <section class="content-section" id="comparacion">
+        <div class="section-heading">
+          <span class="section-kicker">Modelos tradicionales</span>
+          <div>
+            <h2>Comparación de modelos</h2>
+            <p>
+              Bloques visuales que resumen fortalezas y límites para ayudar a
+              contextualizar la elección.
+            </p>
+          </div>
+        </div>
+        <div class="model-grid" id="ilustraciones">
+          <div class="model-item">
+            <article class="surface model-card">
+              <div class="model-body">
+                <span class="small-label">SECUENCIAL</span>
+                <h3>Cascada</h3>
+                <p>
+                  Fases definidas y completadas de forma ordenada antes de
+                  avanzar a la siguiente.
+                </p>
+                <div class="pros-cons">
+                  <section class="pros">
+                    <h4>✓ Ventajas</h4>
+                    <ul>
+                      <li>Plan, alcance y entregables claros.</li>
+                      <li>Documentación sencilla de seguir.</li>
+                      <li>Facilita aprobaciones por fase.</li>
+                    </ul>
+                  </section>
+                  <section class="cons">
+                    <h4>! Desventajas</h4>
+                    <ul>
+                      <li>Cambios tardíos son costosos.</li>
+                      <li>Feedback funcional llega tarde.</li>
+                      <li>Riesgos se descubren al final.</li>
+                    </ul>
+                  </section>
+                </div>
+                <p class="use-case">
+                  <b>Cuándo usarlo:</b> requisitos estables, bien conocidos y
+                  aprobaciones formales.
+                </p>
+              </div>
+            </article>
+            <figure class="surface illustration">
+            <svg viewBox="0 0 620 350" role="img" aria-labelledby="waterfall">
+              <title id="waterfall">
+                Fases del modelo en cascada conectadas en secuencia descendente
+              </title>
+              <defs>
+                <marker
+                  id="waterfall-arrow"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerWidth="12"
+                  markerHeight="12"
+                  markerUnits="userSpaceOnUse"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M0 0 10 5 0 10z" fill="#A9782F" />
+                </marker>
+              </defs>
+              <g fill="#0E6B58" stroke="#075344" stroke-width="2">
+                <rect x="28" y="28" width="176" height="56" rx="8" />
+                <rect x="164" y="112" width="176" height="56" rx="8" />
+                <rect x="300" y="196" width="176" height="56" rx="8" />
+                <rect x="436" y="280" width="156" height="56" rx="8" />
+              </g>
+              <g
+                fill="#fff"
+                font-family="sans-serif"
+                font-size="16"
+                font-weight="600"
+                text-anchor="middle"
+              >
+                <text x="116" y="62">Requisitos</text>
+                <text x="252" y="146">Diseño</text>
+                <text x="388" y="230">Construcción</text>
+                <text x="514" y="314">Pruebas</text>
+              </g>
+              <g
+                fill="none"
+                stroke="#A9782F"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                marker-end="url(#waterfall-arrow)"
+              >
+                <path d="M204 56h48v52" />
+                <path d="M340 140h48v52" />
+                <path d="M476 224h48v52" />
+              </g>
+            </svg>
+            <figcaption class="figure-caption">
+              <b>Modelo en cascada.</b> Cada fase entrega resultados a la
+              siguiente en una secuencia planificada.
+            </figcaption>
+          </figure>
+          </div>
+          <div class="model-item">
+            <article class="surface model-card">
+              <div class="model-body">
+              <span class="small-label">VERIFICACIÓN PLANIFICADA</span>
+              <h3>Modelo en V</h3>
+              <p>
+                Relaciona cada nivel de definición con un nivel de prueba
+                correspondiente.
+              </p>
+              <div class="pros-cons">
+                <section class="pros">
+                  <h4>✓ Ventajas</h4>
+                  <ul>
+                    <li>Pruebas previstas desde el diseño.</li>
+                    <li>Buena trazabilidad de requisitos.</li>
+                    <li>Fomenta verificación temprana.</li>
+                  </ul>
+                </section>
+                <section class="cons">
+                  <h4>! Desventajas</h4>
+                  <ul>
+                    <li>Flexibilidad limitada ante cambios.</li>
+                    <li>Planificación inicial exigente.</li>
+                    <li>Costes de modificación elevados.</li>
+                  </ul>
+                </section>
+              </div>
+              <p class="use-case">
+                <b>Cuándo usarlo:</b> sistemas regulados o con rigurosa
+                evidencia de pruebas.
+              </p>
+              </div>
+            </article>
+            <figure class="surface illustration">
+            <svg viewBox="0 0 720 380" role="img" aria-labelledby="vshape">
+              <title id="vshape">
+                Modelo en V: cada nivel de especificación se conecta con su
+                nivel de pruebas correspondiente
+              </title>
+              <defs>
+                <marker
+                  id="v-arrow"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerWidth="12"
+                  markerHeight="12"
+                  markerUnits="userSpaceOnUse"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M0 0 10 5 0 10z" fill="#0E6B58" />
+                </marker>
+              </defs>
+              <g
+                fill="none"
+                stroke="#0E6B58"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                marker-end="url(#v-arrow)"
+              >
+                <path d="M112 92 340 292" />
+                <path d="M340 292 608 92" />
+              </g>
+              <g fill="#A9782F" stroke="#fff" stroke-width="4">
+                <circle cx="112" cy="92" r="13" />
+                <circle cx="226" cy="192" r="13" />
+                <circle cx="340" cy="292" r="13" />
+                <circle cx="474" cy="192" r="13" />
+                <circle cx="608" cy="92" r="13" />
+              </g>
+              <g
+                fill="#1C2622"
+                font-family="sans-serif"
+                font-size="17"
+                font-weight="600"
+                text-anchor="middle"
+              >
+                <text x="112" y="48">Requisitos</text>
+                <text x="226" y="153">Diseño</text>
+                <text x="340" y="347">Código</text>
+                <text x="474" y="153">Integración</text>
+                <text x="608" y="48">Pruebas</text>
+              </g>
+              <g
+                fill="none"
+                stroke="#A9782F"
+                stroke-width="2"
+                stroke-dasharray="7 7"
+              >
+                <path d="M130 92h460" />
+                <path d="M242 192h216" />
+              </g>
+              <g
+                fill="#77531E"
+                font-family="sans-serif"
+                font-size="13"
+                font-weight="600"
+                text-anchor="middle"
+              >
+                <text x="360" y="78">pruebas de aceptación</text>
+                <text x="350" y="178">pruebas de sistema</text>
+              </g>
+            </svg>
+            <figcaption class="figure-caption">
+              <b>Modelo en V.</b> La construcción desciende hacia el código y
+              la verificación asciende con pruebas vinculadas a cada nivel.
+            </figcaption>
+          </figure>
+          </div>
+          <div class="model-item">
+            <article class="surface model-card">
+              <div class="model-body">
+              <span class="small-label">EVOLUCIÓN POR ENTREGAS</span>
+              <h3>Iterativo e incremental</h3>
+              <p>
+                Construye el producto en ciclos, agregando capacidad y refinando
+                lo aprendido.
+              </p>
+              <div class="pros-cons">
+                <section class="pros">
+                  <h4>✓ Ventajas</h4>
+                  <ul>
+                    <li>Feedback y valor más frecuentes.</li>
+                    <li>Riesgos visibles antes.</li>
+                    <li>Permite priorizar funcionalidades.</li>
+                  </ul>
+                </section>
+                <section class="cons">
+                  <h4>! Desventajas</h4>
+                  <ul>
+                    <li>Requiere coordinación continua.</li>
+                    <li>Arquitectura debe admitir evolución.</li>
+                    <li>Alcance puede cambiar.</li>
+                  </ul>
+                </section>
+              </div>
+              <p class="use-case">
+                <b>Cuándo usarlo:</b> productos complejos con aprendizaje y
+                entregas priorizables.
+              </p>
+              </div>
+            </article>
+            <figure class="surface illustration">
+            <svg viewBox="0 0 720 340" role="img" aria-labelledby="increments">
+              <title id="increments">
+                Incrementos conectados: cada ciclo agrega funcionalidades y
+                recibe feedback para la siguiente iteración
+              </title>
+              <defs>
+                <marker
+                  id="increment-arrow"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerWidth="12"
+                  markerHeight="12"
+                  markerUnits="userSpaceOnUse"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M0 0 10 5 0 10z" fill="#A9782F" />
+                </marker>
+              </defs>
+              <g fill="#E4F0EB" stroke="#3E8E7A" stroke-width="3">
+                <rect x="32" y="132" width="174" height="92" rx="10" />
+                <rect x="273" y="132" width="174" height="92" rx="10" />
+                <rect x="514" y="132" width="174" height="92" rx="10" />
+              </g>
+              <g
+                fill="#0E6B58"
+                font-family="sans-serif"
+                font-size="17"
+                font-weight="600"
+                text-anchor="middle"
+              >
+                <text x="119" y="174">Incremento 1</text>
+                <text x="119" y="199" font-size="13" font-weight="400">Función básica</text>
+                <text x="360" y="174">Incremento 2</text>
+                <text x="360" y="199" font-size="13" font-weight="400">Más capacidad</text>
+                <text x="601" y="174">Incremento 3</text>
+                <text x="601" y="199" font-size="13" font-weight="400">Producto ampliado</text>
+              </g>
+              <g
+                fill="none"
+                stroke="#A9782F"
+                stroke-width="4"
+                stroke-linecap="round"
+                marker-end="url(#increment-arrow)"
+              >
+                <path d="M206 178h65" />
+                <path d="M447 178h65" />
+                <path d="M601 224v58H119v-48" />
+              </g>
+              <g
+                fill="#77531E"
+                font-family="sans-serif"
+                font-size="14"
+                font-weight="600"
+                text-anchor="middle"
+              >
+                <text x="360" y="308">feedback para el siguiente ciclo</text>
+              </g>
+            </svg>
+            <figcaption class="figure-caption">
+              <b>Iterativo e incremental.</b> Cada ciclo agrega capacidad,
+              integra lo anterior y usa feedback para orientar la siguiente
+              entrega.
+            </figcaption>
+          </figure>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site" id="comunidad">
+      <div class="wrap">
+        <div class="foot-brand">
+          <img src="logo2.png" alt="Logotipo Max Quality" />
+          Max Quality
+        </div>
+        <small
+          >&copy; 2026 Max Quality — Proyecto académico de Sistemas de Gestión
+          de Calidad.</small
+        >
+      </div>
+    </footer>
+  </body>
+</html>

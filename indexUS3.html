@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- Descripción de los niveles y tipos de pruebas que ayudan a verificar la calidad del software. -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Técnicas de Aseguramiento de la Calidad — Gestión de la Calidad del Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href="animations.css">
+<script defer src="script.js"></script>
+<style>
+  :root{
+    --paper:#F5F6F3;
+    --paper-raised:#FFFFFF;
+    --ink:#1C2622;
+    --ink-soft:#4B564F;
+    --rule:#D8DDD5;
+    --teal:#0E6B58;
+    --teal-mid:#3E8E7A;
+    --teal-tint:#E4F0EB;
+    --gold:#A9782F;
+    --gold-tint:#F4ECDC;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--paper); color:var(--ink); }
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{ max-width:1000px; margin:0 auto; padding:56px 32px 96px; }
+
+  .crumb{ font-size:14px; color:var(--ink-soft); margin:0 0 6px; }
+  .crumb span{ color:var(--ink); font-weight:500; }
+
+  h1{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:clamp(32px, 4vw, 44px);
+    line-height:1.15;
+    margin:0 0 14px;
+    max-width:18ch;
+  }
+
+  .dek{ font-size:18px; color:var(--ink-soft); max-width:62ch; margin:0 0 40px; }
+
+  hr.top{ border:none; border-top:1px solid var(--rule); margin:0 0 48px; }
+
+  h2{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:24px;
+    margin:0 0 8px;
+  }
+
+  .section-intro{
+    color:var(--ink-soft);
+    max-width:66ch;
+    margin:0 0 32px;
+  }
+
+  section{ margin-bottom:64px; }
+  section:last-child{ margin-bottom:0; }
+
+  /* ---------- Pyramid diagram ---------- */
+  .pyramid-wrap{
+    display:grid;
+    grid-template-columns:minmax(0,440px) 1fr;
+    gap:36px;
+    align-items:center;
+  }
+
+  .pyramid-wrap svg{ width:100%; height:auto; display:block; }
+
+  .pyr-label{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:19px;
+    fill:#FFFFFF;
+  }
+  .pyr-sub{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:12.5px;
+    fill:rgba(255,255,255,0.85);
+  }
+
+  .axis-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    fill:var(--ink-soft);
+  }
+
+  .level-cards{
+    display:grid;
+    gap:14px;
+  }
+  .level-card{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 18px;
+  }
+  .level-card .dot{
+    display:inline-block;
+    width:9px; height:9px;
+    border-radius:50%;
+    margin-right:8px;
+    position:relative;
+    top:-1px;
+  }
+  .level-card.unit .dot{ background:var(--teal); }
+  .level-card.integration .dot{ background:var(--teal-mid); }
+  .level-card.system .dot{ background:var(--gold); }
+
+  .level-card .name{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:16px;
+  }
+  .level-card p{
+    margin:6px 0 0;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width: 760px){
+    .pyramid-wrap{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Black box / white box comparison ---------- */
+  .compare{
+    margin-top:8px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .compare > div{ padding:24px 26px; }
+  .compare > div + div{ border-left:1px solid var(--rule); }
+
+  .compare .icon-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:4px;
+  }
+  .compare .swatch{
+    width:16px; height:16px;
+    border-radius:3px;
+    flex-shrink:0;
+  }
+  .compare .blackbox .swatch{ background:var(--ink); }
+  .compare .whitebox .swatch{ background:var(--paper-raised); border:1.5px solid var(--ink); }
+
+  .compare h3{
+    font-family:'Spectral', serif;
+    font-size:18px;
+    font-weight:600;
+    margin:0;
+  }
+  .compare .subtitle{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin:2px 0 16px;
+  }
+  .compare p{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+  }
+  .compare .techniques{
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .compare .techniques li{
+    font-size:14px;
+    padding:7px 0;
+    border-top:1px solid var(--rule);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .compare .techniques li:first-child{ border-top:none; }
+  .compare .techniques .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--teal);
+    background:var(--teal-tint);
+    padding:2px 6px;
+    border-radius:3px;
+    white-space:nowrap;
+    align-self:flex-start;
+  }
+
+  @media (max-width: 640px){
+    .compare{ grid-template-columns:1fr; }
+    .compare > div + div{ border-left:none; border-top:1px solid var(--rule); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior:auto !important; }
+  }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:2px;
+  }
+  .flip-grid{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; }
+  .flip-card{ display:block; width:100%; height:250px; border:0; padding:0; background:transparent; color:inherit; text-align:left; cursor:pointer; }
+  .flip-card-inner{ display:block; width:100%; height:250px; }
+  .flip-card-face{ position:relative; display:none; width:100%; height:250px; flex-direction:column; justify-content:space-between; overflow:hidden; border:1px solid var(--rule); border-radius:8px; padding:24px; background:var(--paper-raised); box-shadow:0 10px 24px rgba(28,38,34,.08); }
+  .flip-card:not(.is-flipped) .flip-card-front, .flip-card.is-flipped .flip-card-back{ display:flex; }
+  .flip-card-face::after{ content:""; position:absolute; width:110px; height:110px; right:-42px; top:-42px; border:1px solid rgba(14,107,88,.16); border-radius:50%; }
+  .flip-card-title{ display:block; font-family:'Spectral', serif; font-size:23px; line-height:1.15; margin:0 0 12px; }
+  .flip-card-face p{ font-size:15px; line-height:1.55; color:var(--ink-soft); margin:0; }
+  .flip-card-front{ border-top:4px solid var(--teal); }
+  .flip-card-front strong{ color:var(--teal); font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; }
+  .flip-card-front .flip-icon{ display:flex; align-items:center; justify-content:center; width:48px; height:48px; margin:18px 0 20px; border-radius:50%; background:var(--teal-tint); color:var(--teal); font:600 22px 'Spectral', serif; }
+  .flip-card-front .flip-hint{ color:var(--teal); font:600 11px 'IBM Plex Mono', monospace; letter-spacing:.04em; text-transform:uppercase; }
+  .flip-card-back{ border-color:var(--teal); background:var(--teal); color:#fff; }
+  .flip-card-back::after{ border-color:rgba(255,255,255,.24); }
+  .flip-card-back .flip-card-title, .flip-card-back p{ color:#fff; }
+  .flip-card-back .flip-answer{ font:600 11px 'IBM Plex Mono', monospace; letter-spacing:.08em; opacity:.78; }
+  .flip-card:hover .flip-card-face, .flip-card:focus-visible .flip-card-face{ box-shadow:0 16px 30px rgba(28,38,34,.16); }
+  @media (max-width:760px){ .flip-grid{ grid-template-columns:1fr; } }
+  @media (prefers-reduced-motion:reduce){ .flip-card-face{ transition:none; } }
+</style>
+</head>
+<body>
+
+<header class="site inner-header">
+  <!-- La cabecera mantiene a mano los accesos al resto del sitio. -->
+  <div class="site-bar">
+    <a class="brand" href="index.html" aria-label="Max Quality, volver al inicio">
+      <img src="logo.png" alt="Logotipo Max Quality">
+      <span class="brand-name">Max Quality<span>Sistema de Gestión de Calidad</span></span>
+    </a>
+    <nav class="primary" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="indexUS2.html">Fundamentos</a></li>
+        <li><a href="indexUS3.html" aria-current="page">Técnicas de prueba</a></li>
+        <li><a href="indexUS4.html">Herramientas</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- El título ubica el tema que se explica en esta página. -->
+  <p class="crumb">Gestión de la Calidad del Software / <span>Técnicas de Aseguramiento de la Calidad</span></p>
+  <h1>Técnicas de aseguramiento de la calidad</h1>
+  <!-- Este resumen adelanta qué aspectos de las pruebas se van a recorrer. -->
+  <p class="dek">Cómo se organizan las pruebas de software: en qué nivel del sistema se aplican y qué tanto conocimiento del código requieren.</p>
+  <hr class="top">
+
+  <!-- La pirámide ordena las pruebas desde las más pequeñas hasta las de sistema. -->
+  <section>
+    <h2>Niveles de prueba</h2>
+    <p class="section-intro">A medida que se sube de nivel, las pruebas cubren más del sistema pero se vuelven más lentas y costosas de mantener — por eso conviene tener muchas pruebas unitarias en la base y pocas de sistema en la cima.</p>
+
+    <div class="pyramid-wrap">
+      <svg viewBox="0 0 640 320" role="img" aria-labelledby="pyrTitle">
+        <title id="pyrTitle">Pirámide de pruebas: unitarias en la base, integración en el medio, sistema en la cima</title>
+
+        <!-- Las pruebas unitarias forman la base porque son rápidas y numerosas. -->
+        <polygon points="20,300 620,300 530,210 110,210" fill="var(--teal)"></polygon>
+        <!-- Las pruebas de integración revisan la comunicación entre módulos. -->
+        <polygon points="110,210 530,210 450,100 190,100" fill="var(--teal-mid)"></polygon>
+        <!-- Las pruebas de sistema recorren el producto completo. -->
+        <polygon points="190,100 450,100 380,20 260,20" fill="var(--gold)"></polygon>
+
+        <text x="320" y="262" text-anchor="middle" class="pyr-label">Unitarias</text>
+        <text x="320" y="281" text-anchor="middle" class="pyr-sub">funciones y métodos aislados</text>
+
+        <text x="320" y="160" text-anchor="middle" class="pyr-label">Integración</text>
+        <text x="320" y="179" text-anchor="middle" class="pyr-sub">comunicación entre módulos</text>
+
+        <text x="320" y="58" text-anchor="middle" class="pyr-label" style="font-size:15px;">Sistema</text>
+        <text x="320" y="75" text-anchor="middle" class="pyr-sub" style="font-size:10.5px;">flujo completo, extremo a extremo</text>
+
+        <!-- La escala indica que las pruebas más amplias suelen ser más lentas y menos numerosas. -->
+        <line x1="12" y1="15" x2="12" y2="305" stroke="var(--rule)" stroke-width="1"></line>
+        <text x="0" y="15" class="axis-label" transform="rotate(0)"></text>
+        <text x="16" y="24" class="axis-label">menos pruebas, más lentas</text>
+        <text x="16" y="298" class="axis-label">más pruebas, más rápidas</text>
+      </svg>
+
+      <div class="level-cards">
+        <!-- Amplío qué comprueba cada nivel y en qué casos se usa. -->
+        <div class="level-card unit">
+          <span class="name"><span class="dot"></span>Unitarias</span>
+          <p>Verifican una función o método de forma aislada, normalmente con datos simulados (mocks). Son numerosas, rápidas de ejecutar y baratas de mantener.</p>
+        </div>
+        <div class="level-card integration">
+          <span class="name"><span class="dot"></span>Integración</span>
+          <p>Verifican que dos o más módulos se comuniquen correctamente entre sí: llamadas a APIs, acceso a base de datos, servicios externos.</p>
+        </div>
+        <div class="level-card system">
+          <span class="name"><span class="dot"></span>Sistema</span>
+          <p>Validan el sistema completo frente a los requisitos funcionales, simulando el uso real de principio a fin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparo las pruebas de caja negra y caja blanca según cuánto se conoce del código. -->
+  <section>
+    <h2>Tipos de prueba según el conocimiento del código</h2>
+    <p class="section-intro">Más allá del nivel, cada prueba se diseña con un grado distinto de visibilidad sobre la implementación interna.</p>
+
+    <div class="compare">
+      <div class="blackbox">
+        <div class="icon-row">
+          <span class="swatch"></span>
+          <h3>Caja Negra</h3>
+        </div>
+        <p class="subtitle">Black Box Testing</p>
+        <p>Evalúa la funcionalidad sin conocer el código interno: se comparan las salidas obtenidas contra las salidas esperadas según la especificación, a partir de las entradas.</p>
+        <ul class="techniques">
+          <li>Partición de equivalencia <span class="tag">entradas</span></li>
+          <li>Análisis de valores límite <span class="tag">entradas</span></li>
+          <li>Tablas de decisión <span class="tag">reglas</span></li>
+        </ul>
+      </div>
+      <div class="whitebox">
+        <div class="icon-row">
+          <span class="swatch"></span>
+          <h3>Caja Blanca</h3>
+        </div>
+        <p class="subtitle">White Box Testing</p>
+        <p>Requiere conocer la estructura interna del código: los casos de prueba se diseñan para recorrer líneas, ramas y condiciones específicas del programa.</p>
+        <ul class="techniques">
+          <li>Cobertura de sentencias <span class="tag">código</span></li>
+          <li>Cobertura de ramas <span class="tag">código</span></li>
+          <li>Análisis de camino básico <span class="tag">código</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="techniques-title">
+    <h2 id="techniques-title">Técnicas para recordar</h2>
+    <p class="section-intro">Hacé clic en cada tarjeta para ver cuándo conviene aplicar la técnica.</p>
+    <div class="flip-grid">
+      <button class="flip-card" type="button" aria-expanded="false" aria-label="Mostrar información sobre partición de equivalencia">
+        <span class="flip-card-inner"><span class="flip-card-face flip-card-front"><span><strong>01 / CAJA NEGRA</strong><span class="flip-icon" aria-hidden="true">01</span><span class="flip-card-title">Partición de equivalencia</span><span>Agrupa entradas que deberían comportarse de la misma manera.</span></span><span class="flip-hint">Ver aplicación &rarr;</span></span><span class="flip-card-face flip-card-back"><span class="flip-answer">CUÁNDO APLICARLA</span><span><span class="flip-card-title">Reducir casos sin perder cobertura</span><span>Cuando hay muchos valores posibles y querés probar grupos representativos en lugar de cada entrada individual.</span></span><span class="flip-hint">&larr; Volver</span></span></span>
+      </button>
+      <button class="flip-card" type="button" aria-expanded="false" aria-label="Mostrar información sobre valores límite">
+        <span class="flip-card-inner"><span class="flip-card-face flip-card-front"><span><strong>02 / CAJA NEGRA</strong><span class="flip-icon" aria-hidden="true">02</span><span class="flip-card-title">Valores límite</span><span>Explora los bordes donde suelen aparecer errores.</span></span><span class="flip-hint">Ver aplicación &rarr;</span></span><span class="flip-card-face flip-card-back"><span class="flip-answer">CUÁNDO APLICARLA</span><span><span class="flip-card-title">Buscar errores en los extremos</span><span>Cuando una regla tiene mínimos, máximos o rangos: probá justo dentro, justo fuera y en el límite.</span></span><span class="flip-hint">&larr; Volver</span></span></span>
+      </button>
+      <button class="flip-card" type="button" aria-expanded="false" aria-label="Mostrar información sobre cobertura de ramas">
+        <span class="flip-card-inner"><span class="flip-card-face flip-card-front"><span><strong>03 / CAJA BLANCA</strong><span class="flip-icon" aria-hidden="true">03</span><span class="flip-card-title">Cobertura de ramas</span><span>Comprueba los caminos posibles de una decisión.</span></span><span class="flip-hint">Ver aplicación &rarr;</span></span><span class="flip-card-face flip-card-back"><span class="flip-answer">CUÁNDO APLICARLA</span><span><span class="flip-card-title">Comprobar cada decisión</span><span>Cuando necesitás confirmar que cada resultado de una condición fue ejercitado por al menos una prueba.</span></span><span class="flip-hint">&larr; Volver</span></span></span>
+      </button>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

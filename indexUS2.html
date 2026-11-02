@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<!-- En esta página explico los conceptos y las características que se usan para evaluar la calidad del software. -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentos de Calidad — Gestión de la Calidad del Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Spectral:ital@1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href="animations.css">
+<style>
+  :root{
+    --paper:#F5F6F3;
+    --paper-raised:#FFFFFF;
+    --ink:#1C2622;
+    --ink-soft:#4B564F;
+    --rule:#D8DDD5;
+    --teal:#0E6B58;
+    --teal-tint:#E4F0EB;
+    --gold:#A9782F;
+    --gold-tint:#F4ECDC;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--paper);
+    color:var(--ink);
+  }
+
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:1180px;
+    margin:0 auto;
+    padding:56px 32px 96px;
+  }
+  .quality-page .page{
+    position:relative;
+  }
+  .quality-page .page::before{
+    content:"LECTURA  /  01";
+    display:block;
+    width:max-content;
+    margin-bottom:14px;
+    color:var(--teal);
+    font:600 11px/1 'IBM Plex Mono', monospace;
+    letter-spacing:.12em;
+  }
+
+  /* ---------- Header ---------- */
+  .crumb{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  .crumb span{ color:var(--ink); font-weight:500; }
+
+  h1{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:clamp(32px, 4vw, 44px);
+    line-height:1.15;
+    margin:0 0 14px;
+    max-width:14ch;
+  }
+  h1::after{
+    content:"";
+    display:block;
+    width:46px;
+    height:3px;
+    margin-top:22px;
+    background:var(--gold);
+  }
+
+  .dek{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:62ch;
+    margin:0 0 40px;
+  }
+
+  hr.top{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:0 0 48px;
+  }
+
+  /* ---------- Layout: article + sidenotes ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns:minmax(0,660px) 300px;
+    column-gap:56px;
+  }
+
+  article > section{
+    margin-bottom:52px;
+  }
+  article > section:last-child{
+    margin-bottom:0;
+  }
+
+  h2{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:24px;
+    margin:0 0 18px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--rule);
+  }
+
+  p{ margin:0 0 16px; max-width:66ch; }
+  p:last-child{ margin-bottom:0; }
+
+  /* concept list */
+  .concept-list{
+    list-style:none;
+    margin:20px 0 0;
+    padding:0;
+    display:grid;
+    gap:14px;
+  }
+  .concept-list li{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    column-gap:14px;
+    align-items:baseline;
+    padding:14px 16px;
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--teal);
+    border-radius:3px;
+  }
+  .concept-list .term{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    color:var(--teal);
+    white-space:nowrap;
+  }
+  .concept-list .def{
+    color:var(--ink-soft);
+    font-size:15.5px;
+  }
+
+  /* metric list */
+  .metric-list{
+    margin:18px 0 0;
+    padding-left:0;
+    list-style:none;
+    counter-reset:metric;
+  }
+  .metric-list li{
+    counter-increment:metric;
+    position:relative;
+    padding:10px 0 10px 34px;
+    border-bottom:1px solid var(--rule);
+  }
+  .metric-list li:first-child{ border-top:1px solid var(--rule); }
+  .metric-list li::before{
+    content:counter(metric);
+    position:absolute;
+    left:0;
+    top:11px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+    color:var(--gold);
+  }
+  .metric-list strong{ font-weight:600; }
+  .metric-list .muted{ color:var(--ink-soft); font-size:15.5px; }
+
+  /* ISO code chip, used inline in body text */
+  .iso{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.86em;
+    font-weight:600;
+    background:var(--gold-tint);
+    color:var(--gold);
+    padding:1px 6px;
+    border-radius:3px;
+    white-space:nowrap;
+  }
+
+  /* comparison block */
+  .compare{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .compare > div{ padding:20px 22px; }
+  .compare > div + div{ border-left:1px solid var(--rule); }
+  .compare h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .compare .status{
+    font-size:13px;
+    margin:0 0 14px;
+  }
+  .compare .status.retired{ color:#9B4A3C; }
+  .compare .status.current{ color:var(--teal); }
+  .compare ul{
+    margin:0;
+    padding-left:18px;
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .compare li{ margin-bottom:6px; }
+
+  /* ---------- Sidenotes ---------- */
+  aside.notes{
+    position:sticky;
+    top:104px;
+    align-self:start;
+    display:grid;
+    gap:18px;
+  }
+  .note{
+    position:relative;
+    padding:16px 18px;
+    margin:0;
+    background:var(--teal-tint);
+    border-radius:4px;
+    font-size:14.5px;
+    color:#213A31;
+    line-height:1.55;
+    box-shadow:0 10px 24px rgba(14,107,88,.07);
+    border:1px solid rgba(14,107,88,.1);
+  }
+  .note::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:3px;
+    background:var(--teal);
+    border-radius:4px 0 0 4px;
+  }
+  .note .label{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--teal);
+    margin-bottom:6px;
+  }
+  .note.sticky{ position:relative; top:auto; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 880px){
+    .layout{ grid-template-columns:1fr; }
+    aside.notes{ position:static; margin-top:8px; }
+    .note.sticky{ position:relative; }
+    .compare{ grid-template-columns:1fr; }
+    .compare > div + div{ border-left:none; border-top:1px solid var(--rule); }
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body class="quality-page">
+<!-- Desde aquí se puede volver al inicio o visitar los demás temas principales. -->
+<header class="site inner-header">
+  <div class="site-bar">
+    <a class="brand" href="index.html" aria-label="Max Quality, volver al inicio">
+      <img src="logo.png" alt="Logotipo Max Quality">
+      <span class="brand-name">Max Quality<span>Sistema de Gestión de Calidad</span></span>
+    </a>
+    <nav class="primary" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="indexUS2.html" aria-current="page">Fundamentos</a></li>
+        <li><a href="indexUS3.html">Técnicas de prueba</a></li>
+        <li><a href="indexUS4.html">Herramientas</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page">
+
+  <p class="crumb">Gestión de la Calidad del Software / <span>Fundamentos</span></p>
+  <h1>Fundamentos de la calidad del software</h1>
+  <!-- Este resumen anticipa los conceptos que se desarrollan a continuación. -->
+  <p class="dek">Los conceptos, métricas y estándares que definen qué significa que un software sea "de calidad" — y cómo se mide.</p>
+  <hr class="top">
+
+  <div class="layout">
+    <article>
+
+      <section>
+        <h2>¿Qué es la calidad del software?</h2>
+        <!-- Primero explico qué significa hablar de calidad en un producto de software. -->
+        <p>La calidad de un producto de software no es una propiedad única, sino un conjunto de características que, en distinto grado, determinan qué tan bien un sistema satisface las necesidades de quienes lo usan y lo mantienen. Un mismo programa puede ser funcionalmente correcto y, al mismo tiempo, difícil de mantener o lento de usar — por eso la calidad se evalúa siempre por dimensiones, nunca como un todo-o-nada.</p>
+        <p>El modelo clásico para describir estas dimensiones proviene de la norma <span class="iso">ISO/IEC 9126</span>, más tarde ampliada por la familia <span class="iso">ISO/IEC 25000</span>.</p>
+
+        <ul class="concept-list">
+          <li><span class="term">Funcionalidad</span><span class="def">El software hace lo que se especificó que debía hacer, de forma correcta y completa.</span></li>
+          <li><span class="term">Fiabilidad</span><span class="def">Mantiene su nivel de rendimiento ante fallos o condiciones inesperadas, durante un período determinado.</span></li>
+          <li><span class="term">Usabilidad</span><span class="def">Es comprensible, fácil de aprender y agradable de operar para el usuario final.</span></li>
+          <li><span class="term">Eficiencia</span><span class="def">Ofrece el rendimiento adecuado en relación con los recursos que consume.</span></li>
+          <li><span class="term">Mantenibilidad</span><span class="def">Puede modificarse — corregir, mejorar, adaptar — con un esfuerzo razonable.</span></li>
+          <li><span class="term">Portabilidad</span><span class="def">Puede transferirse de un entorno a otro con cambios mínimos.</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Métricas de calidad</h2>
+        <p>Una característica de calidad solo es útil si puede observarse y medirse. Las métricas se agrupan habitualmente en tres niveles, según en qué etapa del ciclo de vida se recogen:</p>
+        <ul class="metric-list">
+          <li><strong>Métricas internas</strong> — <span class="muted">se calculan sobre el propio código o diseño, sin ejecutar el software (complejidad ciclomática, acoplamiento, líneas de código por módulo).</span></li>
+          <li><strong>Métricas externas</strong> — <span class="muted">se obtienen observando el comportamiento del software en ejecución (tiempo de respuesta, tasa de fallos, cobertura de pruebas superada).</span></li>
+          <li><strong>Métricas de calidad en uso</strong> — <span class="muted">miden el efecto del software sobre el usuario en su contexto real (eficacia, satisfacción, seguridad de uso, riesgo).</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Estándares ISO: 9126 y 25000</h2>
+        <p>Aunque conviven en la práctica y en la bibliografía, no son intercambiables: el segundo reemplaza formalmente al primero.</p>
+        <div class="compare">
+          <div>
+            <h3>ISO/IEC 9126</h3>
+            <p class="status retired">1991 – 2001 · reemplazada</p>
+            <ul>
+              <li>Modelo de 6 características de calidad del producto.</li>
+              <li>Enfocada casi exclusivamente en el producto final.</li>
+              <li>No define un proceso de evaluación detallado.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>ISO/IEC 25000 (SQuaRE)</h3>
+            <p class="status current">desde 2005 · vigente</p>
+            <ul>
+              <li>Amplía el modelo a calidad interna, externa y en uso.</li>
+              <li>Organizada en divisiones: requisitos, modelo, medición, evaluación.</li>
+              <li>Incluye guía normativa para auditar y certificar procesos.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <aside class="notes">
+      <div class="note sticky">
+        <span class="label">ISO/IEC 9126</span>
+        La norma original que fijó las seis características de calidad del software. Sigue citándose por su simplicidad pedagógica, aunque fue formalmente retirada.
+      </div>
+      <div class="note">
+        <span class="label">ISO/IEC 25000</span>
+        Familia también llamada SQuaRE (Software Quality Requirements and Evaluation). Divisiones clave: 2500n (gestión), 2510n (modelo de calidad), 2520n (medición), 2530n (requisitos), 2540n (evaluación).
+      </div>
+    </aside>
+  </div>
+
+</div>
+
+<footer class="site detail-footer">
+  <div class="wrap">
+    <a href="index.html">&larr; Volver a Max Quality</a>
+    <small>Contenido académico de Sistemas de Gestión de Calidad</small>
+  </div>
+</footer>
+
+<script defer src="script.js"></script>
+
+</body>
+</html>

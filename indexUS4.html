@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!-- Herramientas que ayudan a organizar pruebas, dar seguimiento a defectos y revisar la calidad del código. -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herramientas de Calidad — Gestión de la Calidad del Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href="animations.css">
+<script defer src="script.js"></script>
+<style>
+  :root{
+    --paper:#F5F6F3;
+    --paper-raised:#FFFFFF;
+    --ink:#1C2622;
+    --ink-soft:#4B564F;
+    --rule:#D8DDD5;
+    --teal:#0E6B58;
+    --teal-mid:#3E8E7A;
+    --teal-tint:#E4F0EB;
+    --gold:#A9782F;
+    --gold-tint:#F4ECDC;
+  }
+ 
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--paper); color:var(--ink); }
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+ 
+  .page{ max-width:1080px; margin:0 auto; padding:56px 32px 96px; }
+  /* make page a little tighter for this tools view */
+  .page{ padding-top:40px; }
+ 
+  .crumb{ font-size:14px; color:var(--ink-soft); margin:0 0 6px; }
+  .crumb span{ color:var(--ink); font-weight:500; }
+ 
+  h1{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:clamp(32px, 4vw, 44px);
+    line-height:1.15;
+    margin:0 0 14px;
+    max-width:36ch;
+  }
+ 
+  .dek{ font-size:18px; color:var(--ink-soft); max-width:58ch; margin:0 0 32px; }
+ 
+  hr.top{ border:none; border-top:1px solid var(--rule); margin:0 0 48px; }
+ 
+  /* ---------- Card grid ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:18px;
+  }
+ 
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:18px 18px 18px;
+    display:flex;
+    flex-direction:column;
+    transition:transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    min-height:180px;
+    gap:10px;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px -10px rgba(28,38,34,0.12);
+    border-color:transparent;
+  }
+ 
+  .badge{
+    width:44px; height:44px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:12px;
+  }
+  .badge svg{
+    width:28px; height:28px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+ 
+  .card.bugs .badge{ background:var(--teal-tint); color:var(--teal); }
+  .card.linters .badge{ background:#EAF1EE; color:var(--teal-mid); }
+  .card.testmgmt .badge{ background:var(--gold-tint); color:var(--gold); }
+ 
+  .card h2{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:17px;
+    margin:0 0 6px;
+  }
+  .card .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.02em;
+    color:var(--ink-soft);
+    margin:0 0 8px;
+  }
+  .card p.desc{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0 0 12px;
+    flex-grow:1;
+  }
+ 
+  .card .examples-label{
+    font-size:11px;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink-soft);
+    margin:0 0 8px;
+    padding-top:10px;
+    border-top:1px solid var(--rule);
+  }
+  .card .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .card .tags span{
+    font-size:12.5px;
+    padding:3px 9px;
+    border-radius:12px;
+    border:1px solid var(--rule);
+    color:var(--ink);
+    background:var(--paper);
+  }
+ 
+  @media (max-width: 880px){
+    .grid{ grid-template-columns:1fr 1fr; gap:14px; }
+  }
+  @media (max-width: 600px){
+    .grid{ grid-template-columns:1fr; gap:12px; }
+  }
+ 
+  @media (prefers-reduced-motion: reduce){
+    .card{ transition:none; }
+  }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:2px;
+  }
+  /* small header overrides to ensure it's flush to the viewport */
+  header.site{ left:0; right:0; }
+  /* align the crumb and heading with the content grid */
+  .crumb, h1, .dek, .top, .grid{ margin-left:0; margin-right:0; }
+  /* slightly denser card layout */
+  .card{ min-height:150px; }
+  .filter-bar{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; }
+  .filter-button{ border:1px solid var(--rule); border-radius:4px; padding:9px 14px; background:var(--paper-raised); color:var(--ink); font:600 13px 'IBM Plex Sans', sans-serif; cursor:pointer; }
+  .filter-button:hover, .filter-button.is-active{ background:var(--teal); border-color:var(--teal); color:#fff; }
+  .card.is-hidden{ display:none; }
+</style>
+</head>
+<body>
+ 
+<header class="site inner-header">
+  <!-- La cabecera permite volver al inicio o cambiar de tema. -->
+  <div class="site-bar">
+    <a class="brand" href="index.html" aria-label="Max Quality, volver al inicio">
+      <img src="logo.png" alt="Logotipo Max Quality">
+      <span class="brand-name">Max Quality<span>Sistema de Gestión de Calidad</span></span>
+    </a>
+    <nav class="primary" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="indexUS2.html">Fundamentos</a></li>
+        <li><a href="indexUS3.html">Técnicas de prueba</a></li>
+        <li><a href="indexUS4.html" aria-current="page">Herramientas</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <p class="crumb">Gestión de la Calidad del Software / <span>Herramientas de Calidad</span></p>
+  <h1>Herramientas de calidad</h1>
+  <!-- Este resumen explica para qué sirven las herramientas reunidas aquí. -->
+  <p class="dek">Una introducción a las herramientas que dan soporte a la gestión de pruebas, el seguimiento de defectos y el análisis de calidad del código.</p>
+  <hr class="top">
+
+  <div class="filter-bar" role="group" aria-label="Filtrar herramientas">
+    <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Todas</button>
+    <button class="filter-button" type="button" data-filter="tracking" aria-pressed="false">Seguimiento</button>
+    <button class="filter-button" type="button" data-filter="code" aria-pressed="false">Código</button>
+    <button class="filter-button" type="button" data-filter="testing" aria-pressed="false">Pruebas</button>
+  </div>
+
+  <div class="grid">
+ 
+    <div class="card bugs" data-category="tracking">
+      <div class="badge">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="12" r="3.2"></circle>
+          <ellipse cx="20" cy="24" rx="8" ry="10"></ellipse>
+          <line x1="12" y1="18" x2="6" y2="14"></line>
+          <line x1="12" y1="24" x2="5" y2="24"></line>
+          <line x1="12" y1="30" x2="6" y2="34"></line>
+          <line x1="28" y1="18" x2="34" y2="14"></line>
+          <line x1="28" y1="24" x2="35" y2="24"></line>
+          <line x1="28" y1="30" x2="34" y2="34"></line>
+          <line x1="20" y1="9" x2="17" y2="4"></line>
+          <line x1="20" y1="9" x2="23" y2="4"></line>
+        </svg>
+      </div>
+      <h2>Bug Trackers</h2>
+      <p class="kicker">Seguimiento de defectos</p>
+      <p class="desc">Registran cada defecto reportado, permiten priorizarlo y siguen su ciclo de vida completo — desde que se detecta hasta que se corrige y se verifica.</p>
+      <div class="examples-label">Ejemplos</div>
+      <div class="tags"><span>Jira</span><span>Bugzilla</span><span>MantisBT</span></div>
+    </div>
+ 
+    <div class="card linters" data-category="code">
+      <div class="badge">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="17" cy="17" r="10"></circle>
+          <line x1="24.5" y1="24.5" x2="34" y2="34"></line>
+          <polyline points="12,17 16,21 22,12"></polyline>
+        </svg>
+      </div>
+      <h2>Linters</h2>
+      <p class="kicker">Análisis estático de código</p>
+      <p class="desc">Revisan el código fuente sin ejecutarlo, detectando errores de estilo, patrones riesgosos y violaciones a las convenciones del equipo antes de que lleguen a producción.</p>
+      <div class="examples-label">Ejemplos</div>
+      <div class="tags"><span>ESLint</span><span>Pylint</span><span>SonarLint</span></div>
+    </div>
+ 
+    <div class="card testmgmt" data-category="testing">
+      <div class="badge">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="9" y="6" width="22" height="30" rx="2"></rect>
+          <rect x="15" y="3" width="10" height="6" rx="1.5"></rect>
+          <line x1="14" y1="17" x2="26" y2="17"></line>
+          <line x1="14" y1="23" x2="26" y2="23"></line>
+          <polyline points="13,29 16,32 22,26"></polyline>
+        </svg>
+      </div>
+      <h2>Test Management</h2>
+      <p class="kicker">Gestión de pruebas</p>
+      <p class="desc">Organizan casos de prueba, planes de ejecución y reportes de cobertura, conectando cada requisito con los resultados obtenidos en las pruebas.</p>
+      <div class="examples-label">Ejemplos</div>
+      <div class="tags"><span>TestRail</span><span>Zephyr</span><span>qTest</span></div>
+    </div>
+ 
+  </div>
+</main>
+</div>
+ 
+</body>
+</html>

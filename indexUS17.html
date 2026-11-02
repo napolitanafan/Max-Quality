@@ -1,0 +1,130 @@
+<!doctype html>
+<!-- Formulario para enviar consultas y compartir opiniones sobre el proyecto. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de contacto — Max Quality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="stylesheet" href="us-pages.css" />
+    <link rel="stylesheet" href="us-theme.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="us-theme">
+    <header class="site inner-header">
+      <div class="site-bar">
+        <div class="brand">
+          <img src="logo.png" alt="Logotipo Max Quality" /><span
+            class="brand-name"
+            >Max Quality<span>Sistema de Gestión de Calidad</span></span
+          >
+        </div>
+        <nav class="primary" aria-label="Navegación de esta página">
+          <ul>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#comunidad">Pie de página</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido" class="page us-page-content">
+      <p class="crumb">Max Quality / <span>Formulario de contacto</span></p>
+      <p class="eyebrow">Formulario de contacto</p>
+      <h1>Nos interesa tu opinión</h1>
+      <p class="dek">
+        Compartí una consulta, sugerencia o comentario sobre el sitio y sus
+        contenidos.
+      </p>
+
+      <section class="content-section">
+        <div class="section-heading">
+          <span class="section-kicker">Formulario de contacto</span>
+          <div>
+            <h2>Escribinos</h2>
+            <p>Formulario accesible con etiquetas asociadas a cada campo.</p>
+          </div>
+        </div>
+        <div class="contact-layout">
+          <aside class="contact-aside">
+            <p class="small-label" style="color: #d9bc8a">HABLEMOS</p>
+            <h3>Tu feedback ayuda a mejorar.</h3>
+            <p>
+              Contanos qué tema te gustaría explorar o qué podemos hacer más
+              claro.
+            </p>
+          </aside>
+          <form class="surface contact-form">
+            <div class="field">
+              <label for="contact-name">Nombre</label
+              ><input
+                id="contact-name"
+                name="nombre"
+                type="text"
+                autocomplete="name"
+                placeholder="Tu nombre"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="contact-email">Correo electrónico</label
+              ><input
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="nombre@ejemplo.com"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="contact-topic">Motivo de contacto</label
+              ><select id="contact-topic" name="motivo">
+                <option>Consulta sobre contenidos</option>
+                <option>Sugerencia</option>
+                <option>Feedback del sitio</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contact-message">Mensaje</label
+              ><textarea
+                id="contact-message"
+                name="mensaje"
+                placeholder="Escribí tu consulta o sugerencia"
+                required
+              ></textarea
+              ><span class="field-help"
+                >No incluyas información personal sensible.</span
+              >
+            </div>
+            <div class="form-actions">
+              <span class="field-help"
+                >Maqueta visual del formulario; el envío no está conectado a un
+                servicio.</span
+              ><button class="button" type="button">Enviar mensaje →</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="site" id="comunidad">
+      <div class="wrap">
+        <div class="foot-brand">
+          <img src="logo2.png" alt="Logotipo Max Quality" />
+          Max Quality
+        </div>
+        <small
+          >&copy; 2026 Max Quality — Proyecto académico de Sistemas de Gestión
+          de Calidad.</small
+        >
+      </div>
+    </footer>
+  </body>
+</html>

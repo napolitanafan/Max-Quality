@@ -1,0 +1,54 @@
+Actúa como un Desarrollador Frontend Senior experto en JavaScript vanilla (ES6+), manipulación del DOM, eventos y desarrollo accesible/responsive.
+
+Necesito que desarrolles la lógica en JavaScript para las páginas 5 a 19 de nuestro proyecto web "Sistemas de Gestión de Calidad del Software" (SGCS 2026).
+Las páginas HTML/CSS ya fueron creadas por el diseñador. Debes generar el código JavaScript modular, documentado, limpio y sin librerías externas.
+
+A continuación, te muestro el desglose técnico exacto de las funcionalidades JS requeridas para cada página y sección:
+
+---
+
+### REQUERIMIENTOS TÉCNICOS DE JAVASCRIPT (Páginas 5 a 19)
+
+US-17: Formulario de Contacto
+o Requerimiento del Usuario: Como usuario, quiero usar un Formulario
+de Contacto para enviar consultas o feedback.
+o Requerimiento del Sistema (Técnico / Funcional):
+[Diseño/CSS]: Formulario accesible con etiquetas &ltlabel&gt
+vinculadas a cada campo (input, textarea).
+
+[JS]: Validación del lado del cliente antes del envío (validación de
+campos obligatorios, formato correcto de correo electrónico).
+Mensaje de confirmación en pantalla al presionar Enviar.
+[QA/Tester]: Pruebas de frontera: enviar campos vacíos, correos
+con sintaxis inválida o textos con caracteres especiales para
+verificar las alertas de error.
+
+7. Funcionalidad Adicional JavaScript
+
+US-18: Comparador Interactivo de Metodologías
+o Requerimiento del Usuario: Como usuario, quiero usar un Comparador
+de Metodologías interactivo para seleccionar dos o más metodologías
+y ver una tabla comparativa con sus características clave.
+o Requerimiento del Sistema (Técnico / Funcional):
+[Diseño/CSS]: Formulario de selección por checkboxes y
+contenedor de tabla adaptativa con bordes e indicadores claros.
+[JS]: Renderizado dinámico de columnas/filas en la tabla
+comparativa mediante lectura de un objeto/arreglo en JS con las
+características de cada metodología según la selección activa del
+usuario.
+[QA/Tester]: Matriz de pruebas para validar que al
+seleccionar/deseleccionar elementos la tabla se cree y limpie sin
+arrojar errores por consola.
+
+US-19: Encuesta de Preferencias Metodológicas
+o Requerimiento del Usuario: Como usuario, quiero usar una Encuesta
+de Preferencias Metodológicas para responder preguntas sobre un
+proyecto y obtener una sugerencia sobre qué metodología es la más
+adecuada.
+o Requerimiento del Sistema (Técnico / Funcional):
+[Diseño/CSS]: Componente tipo asistente/paso a paso (Wizard)
+con barra de progreso visual.
+[JS]: Algoritmo de cómputo de puntaje que evalúa las
+alternativas seleccionadas en el formulario y calcula el
+porcentaje de coincidencia hacia Scrum, Kanban o Cascada,
+presentando un resumen final dinámico.
