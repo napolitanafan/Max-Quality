@@ -29,33 +29,76 @@ const SITE_PAGES = [
 const MAIN_SITE_PAGES = SITE_PAGES.slice(0, 4);
 const MAIN_NAV_LABELS = ['Inicio', 'Fundamentos', 'Pruebas', 'Herramientas'];
 
-// US-05: ilumina las etapas del ciclo cuando entran en pantalla o se activan.
+// US-05: anima el recorrido entre etapas y lleva la selección al centro de la vista.
 function initSdlcTimeline() {
   const items = [...document.querySelectorAll('.timeline-item')];
   if (!items.length) return;
 
-  const activate = item => {
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let activeIndex = -1;
+  let travelTimeout;
+  let userSelected = false;
+  const activate = (item, scroll = false) => {
+    const nextIndex = items.indexOf(item);
+    if (nextIndex < 0) return;
+    const previousIndex = activeIndex;
+    activeIndex = nextIndex;
     items.forEach(stage => {
       const active = stage === item;
       stage.classList.toggle('is-active', active);
+      stage.classList.toggle('is-complete', items.indexOf(stage) < nextIndex);
       stage.setAttribute('aria-pressed', String(active));
     });
+    if (!reducedMotion && previousIndex >= 0 && previousIndex !== nextIndex) {
+      window.clearTimeout(travelTimeout);
+      const firstLink = Math.min(previousIndex, nextIndex);
+      const lastLink = Math.max(previousIndex, nextIndex);
+      items.forEach((stage, index) => {
+        const traveling = index >= firstLink && index < lastLink;
+        stage.classList.toggle('is-traveling', traveling);
+        if (traveling) {
+          stage.style.setProperty('--timeline-travel-delay', `${Math.abs(index - previousIndex) * 110}ms`);
+          stage.style.setProperty('--timeline-travel-direction', nextIndex > previousIndex ? 'normal' : 'reverse');
+        } else {
+          stage.style.removeProperty('--timeline-travel-delay');
+          stage.style.removeProperty('--timeline-travel-direction');
+        }
+      });
+      travelTimeout = window.setTimeout(() => {
+        items.forEach(stage => {
+          stage.classList.remove('is-traveling');
+          stage.style.removeProperty('--timeline-travel-delay');
+          stage.style.removeProperty('--timeline-travel-direction');
+        });
+      }, Math.abs(nextIndex - previousIndex) * 110 + 800);
+    }
+    if (scroll) {
+      item.scrollIntoView({
+        behavior: reducedMotion ? 'auto' : 'smooth',
+        block: 'center'
+      });
+    }
   };
   items.forEach((item, index) => {
     item.setAttribute('role', 'button');
     item.setAttribute('aria-label', `Etapa ${index + 1} de ${items.length}: ${item.querySelector('h3')?.textContent.trim() || `Etapa ${index + 1}`}`);
     item.tabIndex = 0;
-    item.addEventListener('click', () => activate(item));
+    item.addEventListener('click', () => {
+      userSelected = true;
+      activate(item, true);
+    });
     item.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        activate(item);
+        userSelected = true;
+        activate(item, true);
       }
     });
   });
   if ('IntersectionObserver' in window) {
     const visibility = new Map(items.map(item => [item, 0]));
     const observer = new IntersectionObserver(entries => {
+      if (userSelected) return;
       entries.forEach(entry => visibility.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0));
       const maxVisibility = Math.max(...visibility.values());
       if (maxVisibility === 0) return;
