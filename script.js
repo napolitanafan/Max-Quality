@@ -1086,14 +1086,20 @@ function initKanbanBoard() {
     ];
     if (reducedMotion || !('IntersectionObserver' in window)) return;
     main?.classList.add('kanban-reveal-ready');
+    const practiceCards = main ? [...main.querySelectorAll('[data-kanban-practice]')] : [];
+    practiceCards.forEach((card, index) => {
+      card.style.setProperty('--kanban-card-delay', `${index * 150}ms`);
+    });
     cards.forEach((card, index) => {
-      card.style.setProperty('--kanban-card-delay', `${(index % 6) * 75}ms`);
+      if (!card.matches('[data-kanban-practice]')) {
+        card.style.setProperty('--kanban-card-delay', `${(index % 6) * 75}ms`);
+      }
     });
     const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('is-visible');
       revealObserver.unobserve(entry.target);
-    }), { threshold: 0.16 });
+    }), { threshold: 0.05, rootMargin: '0px 0px 24px 0px' });
     cards.forEach(card => revealObserver.observe(card));
   };
   const supportsHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
