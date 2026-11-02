@@ -400,6 +400,7 @@ function initScrumEvents() {
   const grid = section?.querySelector('.topic-grid');
   if (!grid) return;
   const events = {
+    'Ciclo de trabajo': ['Período de duración fija que incluye planificación, reuniones de Scrum, revisión y retrospectiva. El siguiente ciclo comienza inmediatamente al terminar el anterior.', 'Todo el equipo Scrum.'],
     'Planificación del Ciclo': ['Definir por qué el ciclo es valioso, qué se puede completar y cómo se organizará el trabajo.', 'Todo el equipo Scrum: responsable del producto, facilitador de Scrum y equipo de desarrollo.'],
     'Reunión Diaria de Scrum': ['Inspeccionar el avance hacia el Objetivo del Ciclo, identificar obstáculos y adaptar el plan de las próximas 24 horas.', 'Equipo de Desarrollo; otras personas pueden participar si el equipo las invita.'],
     'Revisión del Ciclo': ['Inspeccionar el incremento con las personas interesadas y decidir adaptaciones futuras del producto.', 'Equipo Scrum y personas interesadas relevantes invitadas por la persona responsable del producto.'],
@@ -408,7 +409,7 @@ function initScrumEvents() {
   const maxHours = { 'Planificación del Ciclo': 8, 'Revisión del Ciclo': 4, 'Retrospectiva del Ciclo': 3 };
   const controls = document.createElement('div');
   controls.className = 'sprint-controls';
-  controls.innerHTML = '<label for="sprint-length">Duración del ciclo</label><select id="sprint-length"><option value="1">1 semana</option><option value="2">2 semanas</option><option value="3">3 semanas</option><option value="4" selected>4 semanas</option></select><span>Elegí un evento para ver su propósito, participantes y duración sugerida.</span>';
+  controls.innerHTML = '<label for="sprint-length">Duración del ciclo</label><select id="sprint-length"><option value="1">1 semana</option><option value="2">2 semanas</option><option value="3">3 semanas</option><option value="4" selected>4 semanas</option></select><span>El cronograma incluye dos reuniones de Scrum por semana. Elegí un evento para ver sus detalles.</span>';
   grid.before(controls);
   const timeline = document.createElement('div');
   timeline.className = 'sprint-timeline';
@@ -424,14 +425,19 @@ function initScrumEvents() {
   const openEvent = name => {
     const [objective, people] = events[name];
     const weeks = Number(controls.querySelector('select').value);
-    const minutes = name === 'Reunión Diaria de Scrum' ? 15 : Math.round(maxHours[name] * weeks * 15);
-    const durationLabel = [
-      minutes >= 60 ? `${Math.floor(minutes / 60)} h` : '',
-      minutes % 60 ? `${minutes % 60} min` : ''
-    ].filter(Boolean).join(' ');
-    const duration = name === 'Reunión Diaria de Scrum'
-      ? '15 minutos por día hábil del ciclo.'
-      : `Hasta ${durationLabel} para un ciclo de ${weeks} ${weeks === 1 ? 'semana' : 'semanas'} (referencia máxima para un ciclo de cuatro semanas).`;
+    let duration;
+    if (name === 'Reunión Diaria de Scrum') {
+      duration = `15 minutos por reunión. El cronograma muestra 2 reuniones por semana: ${weeks * 2} en total para este ciclo.`;
+    } else if (name === 'Ciclo de trabajo') {
+      duration = `${weeks} ${weeks === 1 ? 'semana' : 'semanas'}, según la duración seleccionada. Incluye 2 reuniones de Scrum por semana en el cronograma.`;
+    } else {
+      const minutes = Math.round(maxHours[name] * weeks * 15);
+      const durationLabel = [
+        minutes >= 60 ? `${Math.floor(minutes / 60)} h` : '',
+        minutes % 60 ? `${minutes % 60} min` : ''
+      ].filter(Boolean).join(' ');
+      duration = `Hasta ${durationLabel} para un ciclo de ${weeks} ${weeks === 1 ? 'semana' : 'semanas'} (referencia máxima para un ciclo de cuatro semanas).`;
+    }
     dialog.querySelector('h2').textContent = name;
     dialog.querySelector('[data-event-objective]').textContent = objective;
     dialog.querySelector('[data-event-people]').textContent = people;
@@ -461,7 +467,11 @@ function initScrumEvents() {
       timeline.append(button);
     };
     addEvent(1, 'Planificación del Ciclo');
-    for (let week = 1; week <= weeks; week++) addEvent(week, 'Reunión Diaria de Scrum');
+    for (let week = 1; week <= weeks; week++) {
+      for (let meeting = 1; meeting <= 2; meeting++) {
+        addEvent(week, 'Reunión Diaria de Scrum', `Reunión de Scrum ${meeting}/2`);
+      }
+    }
     addEvent(weeks, 'Revisión del Ciclo');
     addEvent(weeks, 'Retrospectiva del Ciclo');
   };
@@ -571,6 +581,11 @@ function initScrumSimulator() {
         moveDown,
         makeButton('Agregar al ciclo', 'add', story.id, 'button')
       );
+      if (story.userAdded) {
+        const remove = makeButton('Eliminar', 'delete', story.id);
+        remove.setAttribute('aria-label', `Eliminar historia de la pila: ${story.title}`);
+        actions.append(remove);
+      }
       item.append(actions);
     } else if (phase === 'planning' && list === sprintList) {
       const actions = document.createElement('div');
@@ -693,6 +708,17 @@ function initScrumSimulator() {
     if (!button) return;
     const story = storyById(button.dataset.storyId);
     if (!story) return;
+    if (button.dataset.action === 'delete') {
+      if (!story.userAdded) return;
+      const storyIndex = stories.indexOf(story);
+      if (storyIndex < 0) return;
+      stories.splice(storyIndex, 1);
+      const sprintIndex = sprintItems.indexOf(story.id);
+      if (sprintIndex >= 0) sprintItems.splice(sprintIndex, 1);
+      render();
+      status.textContent = `Historia eliminada de la Pila del Producto: ${story.title}`;
+      return;
+    }
     if (['priority-up', 'priority-down'].includes(button.dataset.action)) {
       const orderedIds = stories.map(item => item.id);
       changeStoryList(
@@ -756,7 +782,8 @@ function initScrumSimulator() {
       id: `story-${nextStoryId++}`,
       title,
       acceptance,
-      points
+      points,
+      userAdded: true
     });
     addForm.reset();
     render();

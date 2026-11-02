@@ -2621,6 +2621,8 @@ input[type="radio"] {
   gap: 12px;
 }
 .scrum-outcome {
+  display: flex;
+  flex-direction: column;
   padding: 18px;
   border-top: 3px solid var(--teal);
 }
@@ -2631,10 +2633,12 @@ input[type="radio"] {
   border-top-color: #6879ad;
 }
 .scrum-outcome h3 {
+  min-height: 2.4em;
   margin: 7px 0;
   font-size: 1.15rem;
 }
 .scrum-outcome p {
+  flex: 1 0 auto;
   margin: 0;
   color: var(--ink-soft);
   font-size: 12px;
@@ -2712,14 +2716,16 @@ input[type="radio"] {
   transform: translateY(-3px);
 }
 .scrum-outcome-toggle {
+  align-self: flex-start;
   min-height: 36px;
-  margin-top: 12px;
+  margin-top: auto;
   padding: 7px 10px;
   font-size: 10px;
 }
 .scrum-outcome-detail {
+  flex: 1 0 auto;
   padding: 10px 12px;
-  margin-top: 12px;
+  margin: 12px 0;
   border-left: 3px solid var(--gold);
   border-radius: 0 4px 4px 0;
   background: var(--gold-tint);
