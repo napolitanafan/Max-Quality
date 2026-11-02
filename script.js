@@ -13,7 +13,6 @@ const SITE_PAGES = [
   ['indexUS5.html', 'Ciclo de vida del software (US-05)'],
   ['indexUS6y7.html', 'Modelos tradicionales e ilustraciones (US-06/07)'],
   ['indexUS8.html', 'Metodologías ágiles e ilustraciones (US-08/09)'],
-  ['indexUS9.html', 'Ilustraciones ágiles (US-09)'],
   ['indexUS10.html', 'Scrum (US-10)'],
   ['indexUS11.html', 'Kanban (US-11)'],
   ['indexUS12.html', 'Recursos y aprendizaje (US-12 a US-15)'],
